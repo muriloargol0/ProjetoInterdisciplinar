@@ -1,4 +1,9 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\PI",
+    "\\PI\\View"
+  ],
+  "SelectedNode": "\\PI\\View\\Menu.cs",
   "PreviewInSolutionExplorer": false
 }
