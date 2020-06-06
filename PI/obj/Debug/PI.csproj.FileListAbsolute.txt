@@ -120,3 +120,5 @@ C:\Users\kaio_\Desktop\Backup\Fatec\2 semestre\PI\VS\PI\obj\Debug\PI.csproj.Core
 C:\Users\kaio_\Desktop\Backup\Fatec\2 semestre\PI\VS\PI\obj\Debug\PI.csproj.CopyComplete
 C:\Users\kaio_\Desktop\Backup\Fatec\2 semestre\PI\VS\PI\obj\Debug\PI.exe
 C:\Users\kaio_\Desktop\Backup\Fatec\2 semestre\PI\VS\PI\obj\Debug\PI.pdb
+C:\sistemas\ProjetoInterdisciplinar\CODE\PI\obj\Debug\PI.View.FormBuscaCircuito.resources
+C:\sistemas\ProjetoInterdisciplinar\CODE\PI\obj\Debug\PI.View.Login.resources
