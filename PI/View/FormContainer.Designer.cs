@@ -38,7 +38,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Name = "FormContainer";
-            this.Text = "SISTEMA DE BALANCEAMENTO";
+            this.Text = "SISTEMA DE BALANCEAMENTO DE CARGAS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Container_Load);
             this.ResumeLayout(false);
