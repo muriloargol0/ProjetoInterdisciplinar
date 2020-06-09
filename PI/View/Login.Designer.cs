@@ -56,7 +56,7 @@
             // 
             this.btnENTRAR.BackColor = System.Drawing.Color.ForestGreen;
             this.btnENTRAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnENTRAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnENTRAR.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnENTRAR.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnENTRAR.Location = new System.Drawing.Point(90, 314);
             this.btnENTRAR.Name = "btnENTRAR";

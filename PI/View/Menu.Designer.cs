@@ -39,6 +39,7 @@
             this.btnCadastrarCircuito.TabIndex = 0;
             this.btnCadastrarCircuito.Text = "CADASTRAR CIRCUITO";
             this.btnCadastrarCircuito.UseVisualStyleBackColor = true;
+            this.btnCadastrarCircuito.Click += new System.EventHandler(this.btnCadastrarCircuito_Click);
             // 
             // Menu
             // 

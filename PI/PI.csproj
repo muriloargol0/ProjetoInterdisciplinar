@@ -141,6 +141,12 @@
     <Compile Include="View\FormBuscaCircuito.Designer.cs">
       <DependentUpon>FormBuscaCircuito.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormCadastroCircuito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCadastroCircuito.Designer.cs">
+      <DependentUpon>FormCadastroCircuito.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </Compile>
     <EmbeddedResource Include="View\FormBuscaCircuito.resx">
       <DependentUpon>FormBuscaCircuito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCadastroCircuito.resx">
+      <DependentUpon>FormCadastroCircuito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>

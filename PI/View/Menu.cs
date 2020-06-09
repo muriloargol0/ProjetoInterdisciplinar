@@ -16,5 +16,21 @@ namespace PI.View
         {
             InitializeComponent();
         }
+
+        private void btnCadastrarCircuito_Click(object sender, EventArgs e)
+        {
+            FormCadastroCircuito cc = new FormCadastroCircuito();
+            if (!cc.isOpened)
+            {
+                cc.isOpened = true;
+                cc.MdiParent = this.MdiParent;
+                cc.Show();
+            }
+            else
+            {
+                MessageBox.Show("A tela já está aberta.");
+            }
+                
+        }
     }
 }

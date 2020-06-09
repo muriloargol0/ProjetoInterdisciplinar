@@ -122,3 +122,4 @@ C:\Users\kaio_\Desktop\Backup\Fatec\2 semestre\PI\VS\PI\obj\Debug\PI.exe
 C:\Users\kaio_\Desktop\Backup\Fatec\2 semestre\PI\VS\PI\obj\Debug\PI.pdb
 C:\sistemas\ProjetoInterdisciplinar\CODE\PI\obj\Debug\PI.View.FormBuscaCircuito.resources
 C:\sistemas\ProjetoInterdisciplinar\CODE\PI\obj\Debug\PI.View.Login.resources
+C:\sistemas\ProjetoInterdisciplinar\CODE\Pi\obj\Debug\PI.View.FormCadastroCircuito.resources
