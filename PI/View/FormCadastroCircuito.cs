@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,26 @@ namespace PI.View
         public FormCadastroCircuito()
         {
             InitializeComponent();
+        }
+
+        private void FormCadastroCircuito_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _opened = false;
+        }
+
+        private void AtualizaPotenciaAparenteECorrente(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFatorPotencia_Leave(object sender, EventArgs e)
+        {
+            MaskedTextBox t = (MaskedTextBox)sender;
+
+            if (Convert.ToDecimal(t.Text) > 1)
+            {
+                MessageBox.Show("Valor incompatível, por favor digite um número entre 0 e 1");
+            }
         }
     }
 }

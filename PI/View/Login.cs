@@ -22,7 +22,7 @@ namespace PI.View
         {
             LoginController l = new LoginController();
             var msg = string.Empty;
-
+            
             var isLogged = l.DoLogin(txtLogin.Text, txtSenha.Text, out msg);
 
             if (!isLogged)

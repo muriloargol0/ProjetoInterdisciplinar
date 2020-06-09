@@ -71,10 +71,11 @@
             // txtDescricao
             // 
             this.txtDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Location = new System.Drawing.Point(121, 102);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(604, 20);
-            this.txtDescricao.TabIndex = 0;
+            this.txtDescricao.TabIndex = 1;
             // 
             // lblDescricao
             // 
@@ -118,7 +119,7 @@
             this.numericUpDown1.Location = new System.Drawing.Point(346, 129);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(146, 20);
-            this.numericUpDown1.TabIndex = 5;
+            this.numericUpDown1.TabIndex = 3;
             // 
             // numericUpDown2
             // 
@@ -126,7 +127,7 @@
             this.numericUpDown2.Location = new System.Drawing.Point(579, 128);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(146, 20);
-            this.numericUpDown2.TabIndex = 7;
+            this.numericUpDown2.TabIndex = 4;
             // 
             // lblDRAmper
             // 
@@ -152,7 +153,7 @@
             this.txtObservacao.Location = new System.Drawing.Point(121, 233);
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.Size = new System.Drawing.Size(604, 96);
-            this.txtObservacao.TabIndex = 10;
+            this.txtObservacao.TabIndex = 12;
             this.txtObservacao.Text = "";
             // 
             // lblDisjuntor
@@ -171,7 +172,7 @@
             this.txtBitolaCabo.Mask = "0.00";
             this.txtBitolaCabo.Name = "txtBitolaCabo";
             this.txtBitolaCabo.Size = new System.Drawing.Size(146, 20);
-            this.txtBitolaCabo.TabIndex = 11;
+            this.txtBitolaCabo.TabIndex = 6;
             // 
             // txtDisjuntor
             // 
@@ -179,7 +180,7 @@
             this.txtDisjuntor.Location = new System.Drawing.Point(121, 155);
             this.txtDisjuntor.Name = "txtDisjuntor";
             this.txtDisjuntor.Size = new System.Drawing.Size(146, 20);
-            this.txtDisjuntor.TabIndex = 13;
+            this.txtDisjuntor.TabIndex = 5;
             // 
             // lblBitolaCabo
             // 
@@ -206,7 +207,7 @@
             this.txtCorrenteAlternada.Mask = "0.00";
             this.txtCorrenteAlternada.Name = "txtCorrenteAlternada";
             this.txtCorrenteAlternada.Size = new System.Drawing.Size(146, 20);
-            this.txtCorrenteAlternada.TabIndex = 15;
+            this.txtCorrenteAlternada.TabIndex = 7;
             // 
             // lblFatorPotencia
             // 
@@ -224,7 +225,8 @@
             this.txtFatorPotencia.Mask = "0.00";
             this.txtFatorPotencia.Name = "txtFatorPotencia";
             this.txtFatorPotencia.Size = new System.Drawing.Size(146, 20);
-            this.txtFatorPotencia.TabIndex = 17;
+            this.txtFatorPotencia.TabIndex = 8;
+            this.txtFatorPotencia.Leave += new System.EventHandler(this.txtFatorPotencia_Leave);
             // 
             // txtPotenciaAtiva
             // 
@@ -232,7 +234,7 @@
             this.txtPotenciaAtiva.Location = new System.Drawing.Point(346, 182);
             this.txtPotenciaAtiva.Name = "txtPotenciaAtiva";
             this.txtPotenciaAtiva.Size = new System.Drawing.Size(146, 20);
-            this.txtPotenciaAtiva.TabIndex = 20;
+            this.txtPotenciaAtiva.TabIndex = 9;
             this.txtPotenciaAtiva.TabStop = false;
             // 
             // lblPotenciaAtiva
@@ -250,7 +252,7 @@
             this.txtTensao.Location = new System.Drawing.Point(579, 181);
             this.txtTensao.Name = "txtTensao";
             this.txtTensao.Size = new System.Drawing.Size(146, 20);
-            this.txtTensao.TabIndex = 22;
+            this.txtTensao.TabIndex = 10;
             // 
             // lblTensao
             // 
@@ -276,7 +278,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(121, 76);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(144, 20);
-            this.txtCodigo.TabIndex = 23;
+            this.txtCodigo.TabIndex = 0;
             // 
             // txtFases
             // 
@@ -284,7 +286,7 @@
             this.txtFases.Location = new System.Drawing.Point(121, 207);
             this.txtFases.Name = "txtFases";
             this.txtFases.Size = new System.Drawing.Size(146, 20);
-            this.txtFases.TabIndex = 26;
+            this.txtFases.TabIndex = 11;
             // 
             // lblFases
             // 
@@ -320,6 +322,7 @@
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(75, 23);
             this.btnFechar.TabIndex = 34;
+            this.btnFechar.TabStop = false;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = false;
             // 
@@ -334,6 +337,7 @@
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
             this.btnExcluir.TabIndex = 33;
+            this.btnExcluir.TabStop = false;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             // 
@@ -348,6 +352,7 @@
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 32;
+            this.btnSalvar.TabStop = false;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
             // 
@@ -362,6 +367,7 @@
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 31;
+            this.btnNovo.TabStop = false;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = false;
             // 
@@ -398,8 +404,12 @@
             this.Controls.Add(this.txtPotenciaAparente);
             this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.txtDescricao);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCadastroCircuito";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCadastroCircuito";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCadastroCircuito_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDisjuntor)).EndInit();

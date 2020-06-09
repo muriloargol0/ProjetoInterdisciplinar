@@ -36,6 +36,7 @@
             // txtLogin
             // 
             this.txtLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLogin.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.Location = new System.Drawing.Point(90, 229);
             this.txtLogin.Name = "txtLogin";
