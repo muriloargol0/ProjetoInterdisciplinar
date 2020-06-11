@@ -38,7 +38,12 @@ namespace PI.View
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
+        }
+
+        private void FormBuscaCircuito_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _opened = false;
         }
     }
 }

@@ -36,8 +36,9 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listUsuarios = new System.Windows.Forms.ListBox();
+            this.Lista = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBuscar
@@ -83,6 +84,7 @@
             this.btnFechar.TabStop = false;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnExcluir
             // 
@@ -146,14 +148,20 @@
             this.textBox1.Size = new System.Drawing.Size(519, 20);
             this.textBox1.TabIndex = 37;
             // 
-            // listUsuarios
+            // Lista
             // 
-            this.listUsuarios.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listUsuarios.FormattingEnabled = true;
-            this.listUsuarios.Location = new System.Drawing.Point(0, 147);
-            this.listUsuarios.Name = "listUsuarios";
-            this.listUsuarios.Size = new System.Drawing.Size(800, 303);
-            this.listUsuarios.TabIndex = 36;
+            this.Lista.AllowUserToAddRows = false;
+            this.Lista.AllowUserToDeleteRows = false;
+            this.Lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Lista.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Lista.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Lista.GridColor = System.Drawing.Color.White;
+            this.Lista.Location = new System.Drawing.Point(0, 177);
+            this.Lista.MultiSelect = false;
+            this.Lista.Name = "Lista";
+            this.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Lista.Size = new System.Drawing.Size(800, 273);
+            this.Lista.TabIndex = 41;
             // 
             // FormBuscaUsuario
             // 
@@ -161,15 +169,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
+            this.Controls.Add(this.Lista);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listUsuarios);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormBuscaUsuario";
             this.Text = "FormBuscaUsuario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBuscaUsuario_FormClosing);
             this.Load += new System.EventHandler(this.FormBuscaUsuario_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Lista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,6 +198,6 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listUsuarios;
+        private System.Windows.Forms.DataGridView Lista;
     }
 }

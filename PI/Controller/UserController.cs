@@ -19,7 +19,7 @@ namespace PI.Controller
 
                 List<UserDTO> ListaUsuarios = new List<UserDTO>();
 
-                if (!string.IsNullOrEmpty(parametro))
+                if (string.IsNullOrEmpty(parametro))
                 {
                     usr = (from user in ctx.USER
                            select user).ToList();

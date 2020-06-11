@@ -171,6 +171,7 @@
             this.MinimizeBox = false;
             this.Name = "FormBuscaCircuito";
             this.Text = "Busca de circuitos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBuscaCircuito_FormClosing);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

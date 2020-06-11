@@ -60,7 +60,52 @@ namespace PI.View
 
         private void FormBuscaUsuario_Load(object sender, EventArgs e)
         {
-            
+            Lista.DataSource = GetUserController().GetUsuarios();
+
+            for (int i = 0; i < Lista.ColumnCount; i++)
+            {
+                if(Lista.Columns[i].Name.ToUpper() == "iduser".ToUpper())
+                {
+                    Lista.Columns[i].HeaderText = "ID";
+                }
+                else
+                {
+                    if (Lista.Columns[i].Name.ToUpper() == "nome".ToUpper())
+                    {
+                        Lista.Columns[i].HeaderText = "NOME";
+                        Lista.Columns[i].Width = 300;
+                    }
+                    else
+                    {
+                        if (Lista.Columns[i].Name.ToUpper() == "email".ToUpper())
+                        {
+                            Lista.Columns[i].HeaderText = "EMAIL";
+                            Lista.Columns[i].Width = 250;
+                        }
+                        else
+                        {
+                            if (Lista.Columns[i].Name.ToUpper() == "login".ToUpper())
+                            {
+                                Lista.Columns[i].HeaderText = "LOGIN";
+                            }
+                            else
+                            {
+                                Lista.Columns[i].Visible = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FormBuscaUsuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _opened = false;
         }
     }
 }
