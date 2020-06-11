@@ -36,6 +36,8 @@ namespace PI.View
 
         private void AtualizaPotenciaAparenteECorrente(object sender, EventArgs e)
         {
+            int.TryParse(txtPotenciaAparente.Text, out int pa);
+            int.TryParse(txtFatorPotencia.Text, out int fp);
 
         }
 
@@ -47,6 +49,16 @@ namespace PI.View
             {
                 MessageBox.Show("Valor incompatível, por favor digite um número entre 0 e 1");
             }
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            Helper.Helper.LimparCampos(this.Controls);
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

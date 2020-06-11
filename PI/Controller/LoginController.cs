@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PI.Controller
 {
-    class LoginController
+    public class LoginController
     {
         public bool DoLogin(string login, string senha, out string mensagem)
         {
@@ -22,6 +23,8 @@ namespace PI.Controller
                     mensagem = "Usuário e senha incorretos!";
                     return false;
                 }
+
+                Helper.Helper.setUsuarioLogado(usr.ID_USER, usr.LOGIN);
 
                 mensagem = string.Empty;
                 return true;

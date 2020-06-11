@@ -19,18 +19,55 @@ namespace PI.View
 
         private void btnCadastrarCircuito_Click(object sender, EventArgs e)
         {
-            FormCadastroCircuito cc = new FormCadastroCircuito();
-            if (!cc.isOpened)
+            FormBuscaCircuito bc = new FormBuscaCircuito();
+            if (!bc.isOpened)
             {
-                cc.isOpened = true;
-                cc.MdiParent = this.MdiParent;
-                cc.Show();
+                bc.isOpened = true;
+                bc.MdiParent = this.MdiParent;
+                bc.Show();
             }
             else
             {
-                MessageBox.Show("A tela já está aberta.");
+                MessageBox.Show("Esta janela já está aberta!", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
                 
+        }
+
+        private void btnUsuario_Click(object sender, EventArgs e)
+        {
+            if(Helper.Helper.GetIdUser() == 1)
+            {
+                FormBuscaUsuario bu = new FormBuscaUsuario();
+
+                if (!bu.isOpened)
+                {
+                    bu.isOpened = true;
+                    bu.MdiParent = this.MdiParent;
+                    bu.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Esta janela já está aberta!", "Erro",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                FormCadastroUsuario uc = new FormCadastroUsuario();
+
+                if (!uc.isOpened)
+                {
+                    uc.isOpened = true;
+                    uc.MdiParent = this.MdiParent;
+                    uc.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Esta janela já está aberta!", "Erro",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

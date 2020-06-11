@@ -31,6 +31,7 @@
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.btnENTRAR = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtLogin
@@ -42,6 +43,9 @@
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(232, 32);
             this.txtLogin.TabIndex = 0;
+            this.txtLogin.Text = "USUÁRIO";
+            this.txtLogin.Enter += new System.EventHandler(this.txtLogin_Enter);
+            this.txtLogin.Leave += new System.EventHandler(this.txtLogin_Leave);
             // 
             // txtSenha
             // 
@@ -49,9 +53,11 @@
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.Location = new System.Drawing.Point(90, 267);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(232, 32);
             this.txtSenha.TabIndex = 1;
+            this.txtSenha.Text = "******";
+            this.txtSenha.Enter += new System.EventHandler(this.txtSenha_Enter);
+            this.txtSenha.Leave += new System.EventHandler(this.txtSenha_Leave);
             // 
             // btnENTRAR
             // 
@@ -67,12 +73,28 @@
             this.btnENTRAR.UseVisualStyleBackColor = false;
             this.btnENTRAR.Click += new System.EventHandler(this.btnENTRAR_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.button1.Location = new System.Drawing.Point(90, 353);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(232, 33);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "SAIR";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(401, 448);
+            this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnENTRAR);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtLogin);
@@ -92,5 +114,6 @@
         private System.Windows.Forms.TextBox txtLogin;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Button btnENTRAR;
+        private System.Windows.Forms.Button button1;
     }
 }

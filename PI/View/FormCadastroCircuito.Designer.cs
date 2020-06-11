@@ -325,6 +325,7 @@
             this.btnFechar.TabStop = false;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnExcluir
             // 
@@ -370,6 +371,7 @@
             this.btnNovo.TabStop = false;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = false;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // FormCadastroCircuito
             // 
@@ -377,6 +379,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(744, 395);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtFases);
             this.Controls.Add(this.lblFases);

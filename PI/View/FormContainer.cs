@@ -20,10 +20,6 @@ namespace PI.View
 
         private void Container_Load(object sender, EventArgs e)
         {
-
-            toolUser.Text = "Administrador";
-            toolData.Text = string.Format(DateTime.Now.ToShortDateString(), CultureInfo.InvariantCulture);
-
             Menu m = new Menu();
             m.MdiParent = this;
             m.Show();
@@ -38,10 +34,25 @@ namespace PI.View
             if(l.DialogResult == DialogResult.OK)
             {
                 this.Visible = true;
+                toolUser.Text = Helper.Helper.GetLoginUser();
+                toolData.Text = string.Format(DateTime.Now.ToShortDateString(), CultureInfo.InvariantCulture);
             }
             else
             {
                 this.Close();
+            }
+        }
+
+        private void FormContainer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            const string message = "Deseja realmente sair da aplicação?";
+            const string caption = "Sair da Aplicação";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
             }
         }
     }

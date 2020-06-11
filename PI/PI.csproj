@@ -126,9 +126,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Helper\Helper.cs" />
     <Compile Include="Model\CIRCUITO.cs" />
     <Compile Include="Model\CIRCUITO_PROJETO.cs" />
     <Compile Include="Model\DBContext.cs" />
+    <Compile Include="Model\In\UserDTO.cs" />
     <Compile Include="Model\PROJETO.cs" />
     <Compile Include="Model\STATUS.cs" />
     <Compile Include="Model\sysdiagrams.cs" />
@@ -141,11 +144,23 @@
     <Compile Include="View\FormBuscaCircuito.Designer.cs">
       <DependentUpon>FormBuscaCircuito.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormBuscaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormBuscaUsuario.Designer.cs">
+      <DependentUpon>FormBuscaUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormCadastroCircuito.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormCadastroCircuito.Designer.cs">
       <DependentUpon>FormCadastroCircuito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormCadastroUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCadastroUsuario.Designer.cs">
+      <DependentUpon>FormCadastroUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormContainer.cs">
       <SubType>Form</SubType>
@@ -177,8 +192,14 @@
     <EmbeddedResource Include="View\FormBuscaCircuito.resx">
       <DependentUpon>FormBuscaCircuito.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormBuscaUsuario.resx">
+      <DependentUpon>FormBuscaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormCadastroCircuito.resx">
       <DependentUpon>FormCadastroCircuito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCadastroUsuario.resx">
+      <DependentUpon>FormCadastroUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>

@@ -65,9 +65,12 @@
             this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormContainer";
             this.Text = "SISTEMA DE BALANCEAMENTO DE CARGAS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormContainer_FormClosing);
             this.Load += new System.EventHandler(this.Container_Load);
             this.Shown += new System.EventHandler(this.FormContainer_Shown);
             this.statusStrip1.ResumeLayout(false);
