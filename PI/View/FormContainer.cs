@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,37 @@ namespace PI.View
             Menu m = new Menu();
             m.MdiParent = this;
             m.Show();
+        }
+
+        private void FormContainer_Shown(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Login l = new Login();
+            l.ShowDialog();
+
+            if(l.DialogResult == DialogResult.OK)
+            {
+                this.Visible = true;
+                toolUser.Text = Helper.Helper.GetLoginUser();
+                toolData.Text = string.Format(DateTime.Now.ToShortDateString(), CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
+        private void FormContainer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            const string message = "Deseja realmente sair da aplicação?";
+            const string caption = "Sair da Aplicação";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
