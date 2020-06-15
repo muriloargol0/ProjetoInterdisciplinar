@@ -38,10 +38,10 @@
             // 
             this.txtLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLogin.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogin.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.Location = new System.Drawing.Point(90, 229);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(232, 32);
+            this.txtLogin.Size = new System.Drawing.Size(232, 33);
             this.txtLogin.TabIndex = 0;
             this.txtLogin.Text = "USUÁRIO";
             this.txtLogin.Enter += new System.EventHandler(this.txtLogin_Enter);
@@ -50,10 +50,10 @@
             // txtSenha
             // 
             this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenha.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.Location = new System.Drawing.Point(90, 267);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(232, 32);
+            this.txtSenha.Size = new System.Drawing.Size(232, 33);
             this.txtSenha.TabIndex = 1;
             this.txtSenha.Text = "******";
             this.txtSenha.Enter += new System.EventHandler(this.txtSenha_Enter);

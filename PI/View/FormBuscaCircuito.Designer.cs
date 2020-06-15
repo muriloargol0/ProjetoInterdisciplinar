@@ -167,6 +167,7 @@
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormBuscaCircuito";

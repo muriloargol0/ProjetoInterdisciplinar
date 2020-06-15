@@ -73,6 +73,7 @@
             this.btnFechar.TabStop = false;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnExcluir
             // 
@@ -211,6 +212,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.btnVisualizar);
             this.Controls.Add(this.lblSenha);
             this.Controls.Add(this.lblLogin);
@@ -221,6 +223,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCadastroUsuario";
             this.Text = "FormCadastroUsuario";
             this.panel1.ResumeLayout(false);

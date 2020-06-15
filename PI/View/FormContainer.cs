@@ -45,14 +45,17 @@ namespace PI.View
 
         private void FormContainer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            const string message = "Deseja realmente sair da aplicação?";
-            const string caption = "Sair da Aplicação";
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
-            if (result == DialogResult.No)
+            if(Helper.Helper.GetIdUser() > 0)
             {
-                e.Cancel = true;
+                const string message = "Deseja realmente sair da aplicação?";
+                const string caption = "Sair da Aplicação";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
         }
     }

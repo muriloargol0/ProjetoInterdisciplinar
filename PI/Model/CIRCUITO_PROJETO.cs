@@ -18,5 +18,7 @@ namespace PI.Database
         public virtual CIRCUITO CIRCUITO { get; set; }
 
         public virtual PROJETO PROJETO { get; set; }
+
+        public int ENTRADA { get; set; }
     }
 }

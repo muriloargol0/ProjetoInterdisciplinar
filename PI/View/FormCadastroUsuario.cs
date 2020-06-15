@@ -49,5 +49,10 @@ namespace PI.View
         {
             Helper.Helper.LimparCampos(this.Controls);
         }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -407,6 +407,7 @@
             this.Controls.Add(this.txtPotenciaAparente);
             this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.txtDescricao);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormCadastroCircuito";
