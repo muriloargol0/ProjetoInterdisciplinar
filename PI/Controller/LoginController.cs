@@ -15,7 +15,7 @@ namespace PI.Controller
             using (var ctx = new DBContext())
             {
                 var usr = (from u in ctx.USER
-                           where u.LOGIN == login && u.SENHA == senha
+                           where u.LOGIN == login && u.SENHA == senha && u.ID_STATUS == 1
                            select u).FirstOrDefault();
 
                 if(usr == null)
@@ -24,7 +24,7 @@ namespace PI.Controller
                     return false;
                 }
 
-                Helper.Helper.setUsuarioLogado(usr.ID_USER, usr.LOGIN);
+                Helper.Helper.SetUsuarioLogado(usr.ID_USER, usr.LOGIN);
 
                 mensagem = string.Empty;
                 return true;

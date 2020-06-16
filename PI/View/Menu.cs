@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PI.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace PI.View
 {
     public partial class Menu : Form
     {
+        private UserController _uc = null;
         public Menu()
         {
             InitializeComponent();
@@ -34,15 +36,23 @@ namespace PI.View
                 
         }
 
+        #region Usuarios
+            
         private void btnUsuario_Click(object sender, EventArgs e)
         {
+            //Instancia o controller que será compartilhado entre as duas telas
+            if(_uc == null)
+                _uc = new UserController();
+
+            //Verifica o tipo de usuário logado, onde 1 == ADM
             if(Helper.Helper.GetIdUser() == 1)
             {
-                FormBuscaUsuario bu = new FormBuscaUsuario();
+                //Se for ADM: O usuário terá acesso a lista de usuários, caso contrário não
+                FormBuscaUsuario bu = new FormBuscaUsuario(_uc);
 
-                if (!bu.isOpened)
+                if (!_uc.isFormBuscaOpened)
                 {
-                    bu.isOpened = true;
+                    _uc.isFormBuscaOpened = true;
                     bu.MdiParent = this.MdiParent;
                     bu.Show();
                 }
@@ -54,11 +64,13 @@ namespace PI.View
             }
             else
             {
-                FormCadastroUsuario uc = new FormCadastroUsuario();
+                //Se não for ADM apenas a tela de cadastro é aberta diretamente carregando os dados dele
+                FormCadastroUsuario uc = new FormCadastroUsuario(_uc);
 
-                if (!uc.isOpened)
+                if (!_uc.isFormCadastroOpened)
                 {
-                    uc.isOpened = true;
+                    _uc.isFormCadastroOpened = true;
+                    uc.SetEditId = Helper.Helper.GetIdUser();
                     uc.MdiParent = this.MdiParent;
                     uc.Show();
                 }
@@ -68,6 +80,7 @@ namespace PI.View
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        #endregion
         }
     }
 }

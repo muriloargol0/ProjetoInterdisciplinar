@@ -33,15 +33,16 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.txtNOME = new System.Windows.Forms.TextBox();
+            this.txtEMAIL = new System.Windows.Forms.TextBox();
+            this.txtLOGIN = new System.Windows.Forms.TextBox();
+            this.txtSENHA = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblLogin = new System.Windows.Forms.Label();
             this.lblSenha = new System.Windows.Forms.Label();
             this.btnVisualizar = new System.Windows.Forms.Button();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +90,7 @@
             this.btnExcluir.TabStop = false;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSalvar
             // 
@@ -104,6 +106,7 @@
             this.btnSalvar.TabStop = false;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnNovo
             // 
@@ -121,38 +124,44 @@
             this.btnNovo.UseVisualStyleBackColor = false;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // txtCodigo
+            // txtNOME
             // 
-            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCodigo.Location = new System.Drawing.Point(187, 131);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(415, 20);
-            this.txtCodigo.TabIndex = 33;
+            this.txtNOME.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNOME.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNOME.Location = new System.Drawing.Point(187, 131);
+            this.txtNOME.Name = "txtNOME";
+            this.txtNOME.Size = new System.Drawing.Size(415, 20);
+            this.txtNOME.TabIndex = 33;
             // 
-            // textBox1
+            // txtEMAIL
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(187, 157);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(415, 20);
-            this.textBox1.TabIndex = 34;
+            this.txtEMAIL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEMAIL.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtEMAIL.Location = new System.Drawing.Point(187, 157);
+            this.txtEMAIL.Name = "txtEMAIL";
+            this.txtEMAIL.Size = new System.Drawing.Size(415, 20);
+            this.txtEMAIL.TabIndex = 34;
+            this.txtEMAIL.Leave += new System.EventHandler(this.txtEMAIL_Leave);
             // 
-            // textBox2
+            // txtLOGIN
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(187, 183);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(415, 20);
-            this.textBox2.TabIndex = 35;
+            this.txtLOGIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLOGIN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtLOGIN.Location = new System.Drawing.Point(187, 183);
+            this.txtLOGIN.Name = "txtLOGIN";
+            this.txtLOGIN.Size = new System.Drawing.Size(415, 20);
+            this.txtLOGIN.TabIndex = 35;
+            this.txtLOGIN.Leave += new System.EventHandler(this.txtLOGIN_Leave);
             // 
-            // txtSenha
+            // txtSENHA
             // 
-            this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSenha.Location = new System.Drawing.Point(187, 209);
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '*';
-            this.txtSenha.Size = new System.Drawing.Size(415, 20);
-            this.txtSenha.TabIndex = 36;
+            this.txtSENHA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSENHA.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSENHA.Location = new System.Drawing.Point(187, 209);
+            this.txtSENHA.Name = "txtSENHA";
+            this.txtSENHA.PasswordChar = '*';
+            this.txtSENHA.Size = new System.Drawing.Size(415, 20);
+            this.txtSENHA.TabIndex = 36;
             // 
             // lblNome
             // 
@@ -206,6 +215,15 @@
             this.btnVisualizar.UseVisualStyleBackColor = false;
             this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
             // 
+            // txtID
+            // 
+            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtID.Location = new System.Drawing.Point(187, 105);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(415, 20);
+            this.txtID.TabIndex = 41;
+            // 
             // FormCadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,21 +231,23 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnVisualizar);
             this.Controls.Add(this.lblSenha);
             this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblNome);
-            this.Controls.Add(this.txtSenha);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtSENHA);
+            this.Controls.Add(this.txtLOGIN);
+            this.Controls.Add(this.txtEMAIL);
+            this.Controls.Add(this.txtNOME);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormCadastroUsuario";
             this.Text = "FormCadastroUsuario";
+            this.Load += new System.EventHandler(this.FormCadastroUsuario_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -241,14 +261,15 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox txtSenha;
+        private System.Windows.Forms.TextBox txtNOME;
+        private System.Windows.Forms.TextBox txtEMAIL;
+        private System.Windows.Forms.TextBox txtLOGIN;
+        private System.Windows.Forms.TextBox txtSENHA;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblLogin;
         private System.Windows.Forms.Label lblSenha;
         private System.Windows.Forms.Button btnVisualizar;
+        private System.Windows.Forms.TextBox txtID;
     }
 }

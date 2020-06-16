@@ -13,43 +13,36 @@ namespace PI.View
 {
     public partial class FormBuscaUsuario : Form
     {
-        private UserController _userController;
+        private UserController _userController = null;
+        private FormCadastroUsuario _uc = null;
 
-        private static bool _opened = false;
-        public bool isOpened
+        public FormBuscaUsuario(UserController uc)
         {
-            get
-            {
-                return _opened;
-            }
-
-            set
-            {
-                _opened = true;
-            }
-        }
-        public FormBuscaUsuario()
-        {
+            _userController = uc;
             InitializeComponent();
         }
 
-        public UserController GetUserController()
+        private void OpenFormCadastro(int Id = 0)
         {
-            if (_userController == null)
-                _userController = new UserController();
+            
+            //Se o cadastro já foi fechado, ele limpa a variável que armazena a instância do objeto
+            if (!GetUserController().isFormCadastroOpened)
+                _uc = null;
 
-            return _userController;
-        }
+            //Se for nula, um novo objeto é criado
+            if (_uc == null)
+                _uc = new FormCadastroUsuario(GetUserController());
 
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-            FormCadastroUsuario uc = new FormCadastroUsuario();
+            //Se houver ID quer dizer que estamos editando um registro
+            if (Id > 0)
+                _uc.SetEditId = Id;
 
-            if (!uc.isOpened)
+            //Verifica se já existe uma tela aberta
+            if (!GetUserController().isFormCadastroOpened)
             {
-                uc.isOpened = true;
-                uc.MdiParent = this.MdiParent;
-                uc.Show();
+                GetUserController().isFormCadastroOpened = true;
+                _uc.MdiParent = this.MdiParent;
+                _uc.Show();
             }
             else
             {
@@ -58,13 +51,23 @@ namespace PI.View
             }
         }
 
+        public UserController GetUserController()
+        {
+            return _userController;
+        }
+        
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            OpenFormCadastro();
+        }
+
         private void FormBuscaUsuario_Load(object sender, EventArgs e)
         {
             Lista.DataSource = GetUserController().GetUsuarios();
 
             for (int i = 0; i < Lista.ColumnCount; i++)
             {
-                if(Lista.Columns[i].Name.ToUpper() == "iduser".ToUpper())
+                if (Lista.Columns[i].Name.ToUpper() == "iduser".ToUpper())
                 {
                     Lista.Columns[i].HeaderText = "ID";
                 }
@@ -100,12 +103,23 @@ namespace PI.View
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
+            GetUserController().isFormBuscaOpened = false;
             this.Close();
         }
 
         private void FormBuscaUsuario_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _opened = false;
+            GetUserController().isFormBuscaOpened = false;
+        }
+
+        private void EditarDados(object sender, System.EventArgs e)
+        {
+            OpenFormCadastro(Convert.ToInt32(Lista.CurrentRow.Cells[0].Value.ToString()));
+        }
+
+        private void Lista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditarDados(sender, e);
         }
     }
 }

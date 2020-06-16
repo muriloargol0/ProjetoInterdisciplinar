@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -62,7 +62,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnFechar);
             this.panel1.Controls.Add(this.btnExcluir);
-            this.panel1.Controls.Add(this.btnSalvar);
+            this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.btnNovo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -101,20 +101,21 @@
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             // 
-            // btnSalvar
+            // btnEditar
             // 
-            this.btnSalvar.BackColor = System.Drawing.Color.White;
-            this.btnSalvar.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnSalvar.Location = new System.Drawing.Point(95, 15);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 32;
-            this.btnSalvar.TabStop = false;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnEditar.BackColor = System.Drawing.Color.White;
+            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnEditar.Location = new System.Drawing.Point(95, 15);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 32;
+            this.btnEditar.TabStop = false;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.EditarDados);
             // 
             // btnNovo
             // 
@@ -152,16 +153,19 @@
             // 
             this.Lista.AllowUserToAddRows = false;
             this.Lista.AllowUserToDeleteRows = false;
+            this.Lista.AllowUserToResizeRows = false;
             this.Lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Lista.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Lista.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Lista.GridColor = System.Drawing.Color.White;
-            this.Lista.Location = new System.Drawing.Point(0, 177);
+            this.Lista.Location = new System.Drawing.Point(0, 133);
             this.Lista.MultiSelect = false;
             this.Lista.Name = "Lista";
+            this.Lista.ReadOnly = true;
             this.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Lista.Size = new System.Drawing.Size(800, 273);
+            this.Lista.Size = new System.Drawing.Size(800, 317);
             this.Lista.TabIndex = 41;
+            this.Lista.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_CellDoubleClick);
             // 
             // FormBuscaUsuario
             // 
@@ -195,7 +199,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox textBox1;

@@ -22,11 +22,18 @@ namespace PI.Helper
             return _login;
         }
 
-        public static void setUsuarioLogado(int idUser, string login)
+        public static void SetUsuarioLogado(int idUser, string login)
         {
             _idUser = idUser;
             _login = login;
         }
+
+        public static void ShowMessageError(string msg, string title)
+        {
+            MessageBox.Show(msg, title,
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         public static void LimparCampos(Control.ControlCollection ctrls)
         {
             foreach (var itens in ctrls)
