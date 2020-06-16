@@ -22,20 +22,34 @@ namespace PI.View
         {
             LoginController l = new LoginController();
             var msg = string.Empty;
-            
-            var isLogged = l.DoLogin(txtLogin.Text, txtSenha.Text, out msg);
 
-            if (!isLogged)
+            if (!string.IsNullOrEmpty(txtLogin.Text) && txtLogin.Text != "USUÁRIO")
             {
-                MessageBox.Show(msg);
-                txtLogin.Text = string.Empty;
-                txtSenha.Text = string.Empty;
+                if (!string.IsNullOrEmpty(txtSenha.Text) && txtSenha.Text != "SENHA")
+                {
+                    var isLogged = l.DoLogin(txtLogin.Text, txtSenha.Text, out msg);
+
+                    if (!isLogged)
+                    {
+                        MessageBox.Show(msg);
+                        txtLogin.Text = string.Empty;
+                        txtSenha.Text = string.Empty;
+                    }
+                    else
+                    {
+                        DialogResult = DialogResult.OK;
+                        this.Dispose();
+                    }
+                }
+                else
+                {
+                    Helper.Helper.ShowMessageError("O campo senha é obrigatório!", "Campo obrigatório");
+                }
             }
             else
             {
-                DialogResult = DialogResult.OK;
-                this.Dispose();
-            }           
+                Helper.Helper.ShowMessageError("O campo login é obrigatório!", "Campo obrigatório");
+            }
         }
 
         private void txtLogin_Enter(object sender, EventArgs e)
@@ -66,6 +80,14 @@ namespace PI.View
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btnENTRAR_Click(sender, e);
+            }
         }
     }
 }

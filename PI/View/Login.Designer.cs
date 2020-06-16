@@ -55,8 +55,9 @@
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(232, 33);
             this.txtSenha.TabIndex = 1;
-            this.txtSenha.Text = "******";
+            this.txtSenha.Text = "SENHA";
             this.txtSenha.Enter += new System.EventHandler(this.txtSenha_Enter);
+            this.txtSenha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSenha_KeyPress);
             this.txtSenha.Leave += new System.EventHandler(this.txtSenha_Leave);
             // 
             // btnENTRAR

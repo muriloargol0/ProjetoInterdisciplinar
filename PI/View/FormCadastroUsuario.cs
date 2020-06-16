@@ -106,40 +106,15 @@ namespace PI.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            using (var ctx = new DBContext())
-            {
-                //Se não houver ID salva um novo registro
-                if (string.IsNullOrEmpty(txtID.Text.ToString()))
-                {
-                    var user = new USER();
-                    user.ID_STATUS = 1;
-                    user.LOGIN = txtLOGIN.Text.ToUpper();
-                    user.NOME = txtNOME.Text.ToUpper();
-                    user.SENHA = txtSENHA.Text.ToUpper();
-                    user.EMAIL = txtEMAIL.Text.ToUpper();
+            UserDTO dto = new UserDTO();
 
-                    ctx.USER.Add(user);
-                    ctx.SaveChanges();
-                }
-                else
-                {
-                    var id = Convert.ToInt32(txtID.Text.ToString());
+            dto.idUser = Convert.ToInt32(txtID.Text == "" ? "0" : txtID.Text);
+            dto.login = txtLOGIN.Text;
+            dto.nome = txtNOME.Text;
+            dto.senha = txtSENHA.Text;
+            dto.email = txtEMAIL.Text;
 
-                    var query = ctx.USER.Single(x => x.ID_USER == id);
-                    
-                    if(query != null)
-                    {
-                        query.ID_STATUS = 1;
-                        query.LOGIN = txtLOGIN.Text.ToUpper();
-                        query.NOME = txtNOME.Text.ToUpper();
-                        query.SENHA = txtSENHA.Text.ToUpper();
-                        query.EMAIL = txtEMAIL.Text.ToUpper();
-
-                        //ctx.USER.Attach(query);
-                        ctx.SaveChanges();
-                    }
-                }
-            }
+            GetUserController().Save(dto);
         }
 
         private void txtEMAIL_Leave(object sender, EventArgs e)

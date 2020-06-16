@@ -14,6 +14,46 @@ namespace PI.Controller
 
         public bool isFormCadastroOpened { get; set; }
         public bool isFormBuscaOpened { get; set; }
+
+        public bool Save(UserDTO dto)
+        {
+            using (var ctx = new DBContext())
+            {
+                //Se não houver ID salva um novo registro
+                if (dto.idUser == 0)
+                {
+                    var user = new USER();
+                    user.ID_STATUS = 1;
+                    user.LOGIN = dto.login.ToUpper();
+                    user.NOME = dto.nome.ToUpper();
+                    user.SENHA = dto.senha.ToUpper();
+                    user.EMAIL = dto.email.ToUpper();
+
+                    ctx.USER.Add(user);
+                    ctx.SaveChanges();
+                }
+                else
+                {
+                    var id = dto.idUser;
+
+                    var query = ctx.USER.Single(x => x.ID_USER == id);
+
+                    if (query != null)
+                    {
+                        query.ID_STATUS = 1;
+                        query.LOGIN = dto.login.ToUpper();
+                        query.NOME = dto.nome.ToUpper();
+                        query.SENHA = dto.senha.ToUpper();
+                        query.EMAIL = dto.email.ToUpper();
+
+                        //ctx.USER.Attach(query);
+                        ctx.SaveChanges();
+                    }
+                }
+            }
+
+            return true;
+        }
         public List<UserDTO> GetUsuarios(string parametro = "")
         {
             using (var ctx = new DBContext())
