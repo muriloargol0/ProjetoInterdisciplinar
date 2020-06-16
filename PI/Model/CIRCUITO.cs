@@ -23,7 +23,7 @@ namespace PI.Database
 
         public decimal? POTENCIA_APARENTE { get; set; }
 
-        public bool? DISJUNTOR_DR { get; set; }
+        public int? DISJUNTOR_DR { get; set; }
 
         public int? DR_AMPER { get; set; }
 

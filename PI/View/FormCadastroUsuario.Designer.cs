@@ -132,6 +132,7 @@
             this.txtNOME.Name = "txtNOME";
             this.txtNOME.Size = new System.Drawing.Size(415, 20);
             this.txtNOME.TabIndex = 33;
+            this.txtNOME.Tag = "1";
             // 
             // txtEMAIL
             // 
@@ -141,6 +142,7 @@
             this.txtEMAIL.Name = "txtEMAIL";
             this.txtEMAIL.Size = new System.Drawing.Size(415, 20);
             this.txtEMAIL.TabIndex = 34;
+            this.txtEMAIL.Tag = "1";
             this.txtEMAIL.Leave += new System.EventHandler(this.txtEMAIL_Leave);
             // 
             // txtLOGIN
@@ -151,6 +153,7 @@
             this.txtLOGIN.Name = "txtLOGIN";
             this.txtLOGIN.Size = new System.Drawing.Size(415, 20);
             this.txtLOGIN.TabIndex = 35;
+            this.txtLOGIN.Tag = "1";
             this.txtLOGIN.Leave += new System.EventHandler(this.txtLOGIN_Leave);
             // 
             // txtSENHA
@@ -162,6 +165,7 @@
             this.txtSENHA.PasswordChar = '*';
             this.txtSENHA.Size = new System.Drawing.Size(415, 20);
             this.txtSENHA.TabIndex = 36;
+            this.txtSENHA.Tag = "1";
             // 
             // lblNome
             // 
@@ -249,6 +253,7 @@
             this.Name = "FormCadastroUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCadastroUsuario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCadastroUsuario_FormClosing);
             this.Load += new System.EventHandler(this.FormCadastroUsuario_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

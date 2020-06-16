@@ -89,13 +89,15 @@ namespace PI.View
             if (!string.IsNullOrEmpty(txtID.Text))
             {
                 string message = $"Deseja realmente excluir o usuário {txtNOME.Text} ?";
-                string caption = "Sair da Aplicação";
+                string caption = "Excluir";
                 var result = MessageBox.Show(message, caption,
                                                 MessageBoxButtons.YesNo,
                                                 MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     GetUserController().Delete(Convert.ToInt32(txtID.Text));
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
             }
             else
@@ -106,15 +108,25 @@ namespace PI.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            UserDTO dto = new UserDTO();
 
-            dto.idUser = Convert.ToInt32(txtID.Text == "" ? "0" : txtID.Text);
-            dto.login = txtLOGIN.Text;
-            dto.nome = txtNOME.Text;
-            dto.senha = txtSENHA.Text;
-            dto.email = txtEMAIL.Text;
+            if (Helper.Helper.ValidaCampos(this.Controls))
+            {
+                UserDTO dto = new UserDTO();
 
-            GetUserController().Save(dto);
+                dto.idUser = Convert.ToInt32(txtID.Text == "" ? "0" : txtID.Text);
+                dto.login = txtLOGIN.Text;
+                dto.nome = txtNOME.Text;
+                dto.senha = txtSENHA.Text;
+                dto.email = txtEMAIL.Text;
+
+                GetUserController().Save(dto, out int IdUser);
+                txtID.Text = IdUser.ToString();
+            }
+            else
+            {
+                Helper.Helper.ShowMessageError("Os campos destacados na cor VERMELHA devem ser preenchidos!", "Campos Obrigatórios");
+            }
+            
         }
 
         private void txtEMAIL_Leave(object sender, EventArgs e)
@@ -151,6 +163,11 @@ namespace PI.View
                 txtLOGIN.ForeColor = Color.Black;
                 txtLOGIN.Focus();
             }
+        }
+
+        private void FormCadastroUsuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            GetUserController().isFormCadastroOpened = false;
         }
     }
 }

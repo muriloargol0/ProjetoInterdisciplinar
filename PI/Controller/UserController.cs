@@ -15,8 +15,10 @@ namespace PI.Controller
         public bool isFormCadastroOpened { get; set; }
         public bool isFormBuscaOpened { get; set; }
 
-        public bool Save(UserDTO dto)
+        public bool Save(UserDTO dto, out int idUser)
         {
+            idUser = 0;
+
             using (var ctx = new DBContext())
             {
                 //Se não houver ID salva um novo registro
@@ -31,6 +33,7 @@ namespace PI.Controller
 
                     ctx.USER.Add(user);
                     ctx.SaveChanges();
+                    idUser = ctx.USER.OrderBy(u => u.ID_USER).OrderByDescending(x => x.ID_USER).Take(1).FirstOrDefault().ID_USER;
                 }
                 else
                 {
@@ -46,6 +49,7 @@ namespace PI.Controller
                         query.SENHA = dto.senha.ToUpper();
                         query.EMAIL = dto.email.ToUpper();
 
+                        idUser = id;
                         //ctx.USER.Attach(query);
                         ctx.SaveChanges();
                     }
