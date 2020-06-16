@@ -223,6 +223,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(415, 20);
             this.txtID.TabIndex = 41;
+            this.txtID.Visible = false;
             // 
             // FormCadastroUsuario
             // 

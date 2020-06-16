@@ -86,21 +86,21 @@ namespace PI.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            using (var ctx = new DBContext())
+            if (!string.IsNullOrEmpty(txtID.Text))
             {
-                var id = Convert.ToInt32(txtID.Text);
-                var query = ctx.USER.Single(x => x.ID_USER == id);
-
-                string message = $"Deseja realmente excluir o usuário {query.NOME} ?";
+                string message = $"Deseja realmente excluir o usuário {txtNOME.Text} ?";
                 string caption = "Sair da Aplicação";
                 var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    query.ID_STATUS = 2;
-                    ctx.SaveChanges();
+                    GetUserController().Delete(Convert.ToInt32(txtID.Text));
                 }
+            }
+            else
+            {
+                Helper.Helper.ShowMessageError("Não é possível excluir um usuário que ainda não foi registrado!", "Erro de Exclusão");
             }
         }
 

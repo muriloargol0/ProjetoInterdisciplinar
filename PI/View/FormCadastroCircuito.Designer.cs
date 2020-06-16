@@ -37,7 +37,6 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.lblDRAmper = new System.Windows.Forms.Label();
             this.lblObservacao = new System.Windows.Forms.Label();
-            this.txtObservacao = new System.Windows.Forms.RichTextBox();
             this.lblDisjuntor = new System.Windows.Forms.Label();
             this.txtBitolaCabo = new System.Windows.Forms.MaskedTextBox();
             this.txtDisjuntor = new System.Windows.Forms.NumericUpDown();
@@ -59,6 +58,8 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtObservacao = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDisjuntor)).BeginInit();
@@ -76,6 +77,7 @@
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(604, 20);
             this.txtDescricao.TabIndex = 1;
+            this.txtDescricao.Tag = "1";
             // 
             // lblDescricao
             // 
@@ -94,6 +96,7 @@
             this.txtPotenciaAparente.Name = "txtPotenciaAparente";
             this.txtPotenciaAparente.Size = new System.Drawing.Size(144, 20);
             this.txtPotenciaAparente.TabIndex = 2;
+            this.txtPotenciaAparente.Tag = "1";
             // 
             // lblPotenciaAparente
             // 
@@ -120,6 +123,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(146, 20);
             this.numericUpDown1.TabIndex = 3;
+            this.numericUpDown1.Tag = "1";
             // 
             // numericUpDown2
             // 
@@ -128,6 +132,7 @@
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(146, 20);
             this.numericUpDown2.TabIndex = 4;
+            this.numericUpDown2.Tag = "1";
             // 
             // lblDRAmper
             // 
@@ -147,15 +152,6 @@
             this.lblObservacao.TabIndex = 9;
             this.lblObservacao.Text = "Observação";
             // 
-            // txtObservacao
-            // 
-            this.txtObservacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtObservacao.Location = new System.Drawing.Point(121, 233);
-            this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(604, 96);
-            this.txtObservacao.TabIndex = 12;
-            this.txtObservacao.Text = "";
-            // 
             // lblDisjuntor
             // 
             this.lblDisjuntor.AutoSize = true;
@@ -173,6 +169,7 @@
             this.txtBitolaCabo.Name = "txtBitolaCabo";
             this.txtBitolaCabo.Size = new System.Drawing.Size(146, 20);
             this.txtBitolaCabo.TabIndex = 6;
+            this.txtBitolaCabo.Tag = "1";
             // 
             // txtDisjuntor
             // 
@@ -181,6 +178,7 @@
             this.txtDisjuntor.Name = "txtDisjuntor";
             this.txtDisjuntor.Size = new System.Drawing.Size(146, 20);
             this.txtDisjuntor.TabIndex = 5;
+            this.txtDisjuntor.Tag = "1";
             // 
             // lblBitolaCabo
             // 
@@ -208,6 +206,7 @@
             this.txtCorrenteAlternada.Name = "txtCorrenteAlternada";
             this.txtCorrenteAlternada.Size = new System.Drawing.Size(146, 20);
             this.txtCorrenteAlternada.TabIndex = 7;
+            this.txtCorrenteAlternada.Tag = "1";
             // 
             // lblFatorPotencia
             // 
@@ -226,6 +225,7 @@
             this.txtFatorPotencia.Name = "txtFatorPotencia";
             this.txtFatorPotencia.Size = new System.Drawing.Size(146, 20);
             this.txtFatorPotencia.TabIndex = 8;
+            this.txtFatorPotencia.Tag = "1";
             this.txtFatorPotencia.Leave += new System.EventHandler(this.txtFatorPotencia_Leave);
             // 
             // txtPotenciaAtiva
@@ -235,7 +235,7 @@
             this.txtPotenciaAtiva.Name = "txtPotenciaAtiva";
             this.txtPotenciaAtiva.Size = new System.Drawing.Size(146, 20);
             this.txtPotenciaAtiva.TabIndex = 9;
-            this.txtPotenciaAtiva.TabStop = false;
+            this.txtPotenciaAtiva.Tag = "1";
             // 
             // lblPotenciaAtiva
             // 
@@ -253,6 +253,7 @@
             this.txtTensao.Name = "txtTensao";
             this.txtTensao.Size = new System.Drawing.Size(146, 20);
             this.txtTensao.TabIndex = 10;
+            this.txtTensao.Tag = "1";
             // 
             // lblTensao
             // 
@@ -279,6 +280,7 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(144, 20);
             this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.Tag = "1";
             // 
             // txtFases
             // 
@@ -287,6 +289,7 @@
             this.txtFases.Name = "txtFases";
             this.txtFases.Size = new System.Drawing.Size(146, 20);
             this.txtFases.TabIndex = 11;
+            this.txtFases.Tag = "1";
             // 
             // lblFases
             // 
@@ -356,6 +359,7 @@
             this.btnSalvar.TabStop = false;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnNovo
             // 
@@ -373,6 +377,25 @@
             this.btnNovo.UseVisualStyleBackColor = false;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
+            // txtID
+            // 
+            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtID.Location = new System.Drawing.Point(303, 76);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(144, 20);
+            this.txtID.TabIndex = 32;
+            // 
+            // txtObservacao
+            // 
+            this.txtObservacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtObservacao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtObservacao.Location = new System.Drawing.Point(121, 233);
+            this.txtObservacao.Multiline = true;
+            this.txtObservacao.Name = "txtObservacao";
+            this.txtObservacao.Size = new System.Drawing.Size(604, 120);
+            this.txtObservacao.TabIndex = 12;
+            this.txtObservacao.Tag = "1";
+            // 
             // FormCadastroCircuito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,6 +403,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(744, 395);
             this.ControlBox = false;
+            this.Controls.Add(this.txtObservacao);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtFases);
             this.Controls.Add(this.lblFases);
@@ -397,7 +422,6 @@
             this.Controls.Add(this.txtDisjuntor);
             this.Controls.Add(this.lblDisjuntor);
             this.Controls.Add(this.txtBitolaCabo);
-            this.Controls.Add(this.txtObservacao);
             this.Controls.Add(this.lblObservacao);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.lblDRAmper);
@@ -437,7 +461,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label lblDRAmper;
         private System.Windows.Forms.Label lblObservacao;
-        private System.Windows.Forms.RichTextBox txtObservacao;
         private System.Windows.Forms.Label lblDisjuntor;
         private System.Windows.Forms.MaskedTextBox txtBitolaCabo;
         private System.Windows.Forms.NumericUpDown txtDisjuntor;
@@ -459,5 +482,7 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtObservacao;
     }
 }

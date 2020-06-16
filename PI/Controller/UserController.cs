@@ -54,6 +54,19 @@ namespace PI.Controller
 
             return true;
         }
+
+        public bool Delete(int Id)
+        {
+            using (var ctx = new DBContext())
+            {
+                var query = ctx.USER.Single(x => x.ID_USER == Id);
+                
+                query.ID_STATUS = 2;
+                ctx.SaveChanges();
+
+                return true;
+            }
+        }
         public List<UserDTO> GetUsuarios(string parametro = "")
         {
             using (var ctx = new DBContext())

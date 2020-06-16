@@ -47,7 +47,7 @@ namespace PI.View
 
             if (Convert.ToDecimal(t.Text) > 1)
             {
-                MessageBox.Show("Valor incompatível, por favor digite um número entre 0 e 1");
+                Helper.Helper.ShowMessageError("Valor incompatível, por favor digite um número entre 0 e 1", "Erro de validação");
             }
         }
 
@@ -59,6 +59,14 @@ namespace PI.View
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if (!Helper.Helper.ValidaCampos(this.Controls))
+            {
+                Helper.Helper.ShowMessageError("Os campos destacados na cor VERMELHA devem ser preenchidos!", "Campos Obrigatórios");
+            }
         }
     }
 }

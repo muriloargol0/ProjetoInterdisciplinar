@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,92 @@ namespace PI.Helper
                 if (itens is RichTextBox)
                     ((RichTextBox)(itens)).Text = string.Empty;
             }
+        }
+
+        public static bool ValidaCampos(Control.ControlCollection ctrls)
+        {
+            var isValid = true;
+
+            foreach (var itens in ctrls)
+            {
+                if (itens is TextBox)
+                {
+                    if(Convert.ToInt32(((TextBox)(itens)).Tag) == 1)
+                    {
+                        if(((TextBox)(itens)).Text == string.Empty)
+                        {
+                            isValid = false;
+                            ((TextBox)(itens)).BackColor = Color.Red;
+                            ((TextBox)(itens)).ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            isValid = true;
+                            ((TextBox)(itens)).BackColor = Color.White;
+                            ((TextBox)(itens)).ForeColor = Color.Black;
+                        }
+                    }
+                }
+
+                if (itens is MaskedTextBox)
+                {
+                    if (Convert.ToInt32(((MaskedTextBox)(itens)).Tag) == 1)
+                    {
+                        if (((MaskedTextBox)(itens)).Text == string.Empty || ((MaskedTextBox)(itens)).Text.Trim() == ",")
+                        {
+                            isValid = false;
+                            ((MaskedTextBox)(itens)).BackColor = Color.Red;
+                            ((MaskedTextBox)(itens)).ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            isValid = true;
+                            ((MaskedTextBox)(itens)).BackColor = Color.White;
+                            ((MaskedTextBox)(itens)).ForeColor = Color.Black;
+                        }
+                    }
+                }
+
+                if (itens is NumericUpDown)
+                {
+                    if (Convert.ToInt32(((NumericUpDown)(itens)).Tag) == 1)
+                    {
+                        if (((NumericUpDown)(itens)).Text == string.Empty || ((NumericUpDown)(itens)).Text == "0")
+                        {
+                            isValid = false;
+                            ((NumericUpDown)(itens)).BackColor = Color.Red;
+                            ((NumericUpDown)(itens)).ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            isValid = true;
+                            ((NumericUpDown)(itens)).BackColor = Color.White;
+                            ((NumericUpDown)(itens)).ForeColor = Color.Black;
+                        }
+                    }
+                }
+
+                if (itens is RichTextBox)
+                {
+                    if (Convert.ToInt32(((RichTextBox)(itens)).Tag) == 1)
+                    {
+                        if (((RichTextBox)(itens)).Text == string.Empty)
+                        {
+                            isValid = false;
+                            ((RichTextBox)(itens)).BackColor = Color.Red;
+                            ((RichTextBox)(itens)).ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            isValid = true;
+                            ((RichTextBox)(itens)).BackColor = Color.White;
+                            ((RichTextBox)(itens)).ForeColor = Color.Black;
+                        }
+                    }
+                }
+            }
+
+            return isValid;
         }
     }
 }
