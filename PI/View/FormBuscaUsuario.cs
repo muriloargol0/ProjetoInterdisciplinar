@@ -41,8 +41,14 @@ namespace PI.View
             if (!GetUserController().isFormCadastroOpened)
             {
                 GetUserController().isFormCadastroOpened = true;
-                _uc.MdiParent = this.MdiParent;
-                _uc.Show();
+                //_uc.MdiParent = this.MdiParent;
+                _uc.ShowDialog();
+
+                if(_uc.DialogResult == DialogResult.OK)
+                {
+                    PreencheGrid();
+                }
+
             }
             else
             {
@@ -61,9 +67,17 @@ namespace PI.View
             OpenFormCadastro();
         }
 
-        private void FormBuscaUsuario_Load(object sender, EventArgs e)
+        private void PreencheGrid(string param = "")
         {
-            Lista.DataSource = GetUserController().GetUsuarios();
+            if(param == "")
+            {
+                Lista.DataSource = GetUserController().GetUsuarios();
+            }
+            else
+            {
+                Lista.DataSource = GetUserController().GetUsuarios(param);
+            }
+            
 
             for (int i = 0; i < Lista.ColumnCount; i++)
             {
@@ -101,6 +115,11 @@ namespace PI.View
             }
         }
 
+        private void FormBuscaUsuario_Load(object sender, EventArgs e)
+        {
+            PreencheGrid();
+        }
+
         private void btnFechar_Click(object sender, EventArgs e)
         {
             GetUserController().isFormBuscaOpened = false;
@@ -120,6 +139,19 @@ namespace PI.View
         private void Lista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             EditarDados(sender, e);
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtBuscaNome.Text))
+            {
+                PreencheGrid(txtBuscaNome.Text.ToString());
+            }
+            else
+            {
+                PreencheGrid();
+            }
+                    
         }
     }
 }

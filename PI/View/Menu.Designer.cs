@@ -30,13 +30,14 @@
         {
             this.btnCadastrarCircuito = new System.Windows.Forms.Button();
             this.btnUsuario = new System.Windows.Forms.Button();
+            this.btnProjeto = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCadastrarCircuito
             // 
             this.btnCadastrarCircuito.Location = new System.Drawing.Point(21, 42);
             this.btnCadastrarCircuito.Name = "btnCadastrarCircuito";
-            this.btnCadastrarCircuito.Size = new System.Drawing.Size(237, 55);
+            this.btnCadastrarCircuito.Size = new System.Drawing.Size(237, 121);
             this.btnCadastrarCircuito.TabIndex = 0;
             this.btnCadastrarCircuito.Text = "CIRCUITO";
             this.btnCadastrarCircuito.UseVisualStyleBackColor = true;
@@ -44,22 +45,33 @@
             // 
             // btnUsuario
             // 
-            this.btnUsuario.Location = new System.Drawing.Point(21, 171);
+            this.btnUsuario.Location = new System.Drawing.Point(548, 42);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(237, 55);
+            this.btnUsuario.Size = new System.Drawing.Size(237, 121);
             this.btnUsuario.TabIndex = 1;
             this.btnUsuario.Text = "USUÁRIO";
             this.btnUsuario.UseVisualStyleBackColor = true;
             this.btnUsuario.Click += new System.EventHandler(this.btnUsuario_Click);
             // 
+            // btnProjeto
+            // 
+            this.btnProjeto.Location = new System.Drawing.Point(286, 42);
+            this.btnProjeto.Name = "btnProjeto";
+            this.btnProjeto.Size = new System.Drawing.Size(237, 121);
+            this.btnProjeto.TabIndex = 2;
+            this.btnProjeto.Text = "PROJETO";
+            this.btnProjeto.UseVisualStyleBackColor = true;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(803, 197);
             this.ControlBox = false;
+            this.Controls.Add(this.btnProjeto);
             this.Controls.Add(this.btnUsuario);
             this.Controls.Add(this.btnCadastrarCircuito);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Menu";
@@ -72,5 +84,6 @@
 
         private System.Windows.Forms.Button btnCadastrarCircuito;
         private System.Windows.Forms.Button btnUsuario;
+        private System.Windows.Forms.Button btnProjeto;
     }
 }

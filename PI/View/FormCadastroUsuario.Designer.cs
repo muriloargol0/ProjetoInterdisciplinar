@@ -246,6 +246,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormCadastroUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCadastroUsuario";
             this.Load += new System.EventHandler(this.FormCadastroUsuario_Load);
             this.panel1.ResumeLayout(false);

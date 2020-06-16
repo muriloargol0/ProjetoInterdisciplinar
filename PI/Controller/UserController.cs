@@ -31,7 +31,7 @@ namespace PI.Controller
                 else
                 {
                     usr = (from user in ctx.USER
-                           where user.LOGIN == parametro
+                           where user.LOGIN.Contains(parametro) && user.ID_STATUS == 1
                            select user).ToList();
                 }
 
@@ -65,6 +65,9 @@ namespace PI.Controller
                 {
                     query = ctx.USER.Where(x => x.EMAIL == value).FirstOrDefault();
 
+                    if (query == null)
+                        return false;
+
                     if(query.ID_USER != ID)
                     {
                         if (!string.IsNullOrEmpty(query.EMAIL.ToString()))
@@ -75,6 +78,9 @@ namespace PI.Controller
                 if(name == "login")
                 {
                     query = ctx.USER.Where(x => x.LOGIN == value).FirstOrDefault();
+
+                    if (query == null)
+                        return false;
 
                     if (query.ID_USER != ID)
                     {

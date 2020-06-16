@@ -55,6 +55,7 @@ namespace PI.View
         private void btnFechar_Click(object sender, EventArgs e)
         {
             GetUserController().isFormCadastroOpened = false;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
