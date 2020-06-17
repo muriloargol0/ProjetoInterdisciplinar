@@ -48,6 +48,8 @@ namespace PI.Database
 
         public int? ID_STATUS { get; set; }
 
+        public string TIPO_INSTALACAO { get; set; }
+
         [Column(TypeName = "timestamp")]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [MaxLength(8)]

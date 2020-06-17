@@ -1,6 +1,7 @@
 ﻿using PI.Database;
 using PI.Model.In;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PI.Controller
 {
-    class CircuitoController
+    public class CircuitoController
     {
 
         public bool isFormCadastroOpened { get; set; }
@@ -93,7 +94,7 @@ namespace PI.Controller
         {
             using (var ctx = new DBContext())
             {
-                List<CIRCUITO> c = null;
+                List<CIRCUITO> c = new List<CIRCUITO>();
 
                 List<CircuitoDTO> ListaCircuitos = new List<CircuitoDTO>();
 
@@ -101,7 +102,7 @@ namespace PI.Controller
                 {
                     c = (from ci in ctx.CIRCUITO
                            where ci.ID_STATUS == 1
-                           select ci).ToList();
+                          select ci).ToList();
                 }
                 else
                 {
@@ -131,7 +132,7 @@ namespace PI.Controller
                         ci.tensao = item.TENSAO;
                         ci.codCircuito = item.COD_CIRCUITO;
                         ci.fases = item.FASES;
-
+                        ci.tipoInstalacao = item.TIPO_INSTALACAO;
                         ListaCircuitos.Add(ci);
                     }
                 }

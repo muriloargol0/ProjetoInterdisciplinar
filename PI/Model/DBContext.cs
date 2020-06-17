@@ -18,6 +18,7 @@ namespace PI.Database
         public virtual DbSet<STATUS> STATUS { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<USER> USER { get; set; }
+        public virtual DbSet<DIMENSAO_CABO> DIMENSAO_CABO { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -25,6 +26,10 @@ namespace PI.Database
                 .Property(e => e.DESCRICAO)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<CIRCUITO>()
+                .Property(e => e.TIPO_INSTALACAO)
+                .IsUnicode(false);
+            
             modelBuilder.Entity<CIRCUITO>()
                 .Property(e => e.POTENCIA_APARENTE)
                 .HasPrecision(8, 2);
@@ -72,6 +77,14 @@ namespace PI.Database
             modelBuilder.Entity<USER>()
                 .Property(e => e.SENHA)
                 .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DIMENSAO_CABO>()
+                .Property(e => e.DIAMENTRO_CABO)
+                .HasPrecision(8, 2);
+
+            modelBuilder.Entity<DIMENSAO_CABO>()
+                .Property(e => e.TIPO_INSTALACAO)
                 .IsUnicode(false);
         }
     }

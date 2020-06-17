@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,6 +49,58 @@ namespace PI.Helper
                 if (itens is RichTextBox)
                     ((RichTextBox)(itens)).Text = string.Empty;
             }
+        }
+
+        public static string SomenteNumeros(string str)
+        {
+            string nstr = string.Empty;
+
+            try
+            {
+                nstr = Regex.Replace(str, @"(i?)[a-z.,;:áéíóúâêîôûàèìòù\-()[\]{}\+=*'´`´ §/@#$%¨&!^ºª\""]", "",
+                                    RegexOptions.None, TimeSpan.FromSeconds(1.5));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                nstr = string.Empty;
+            }
+
+            return nstr;
+        }
+
+        public static string SomenteCaracteres(string str)
+        {
+            string nstr = string.Empty;
+
+            try
+            {
+                nstr  = Regex.Replace(str, @"[1234567890]", "",
+                                     RegexOptions.None, TimeSpan.FromSeconds(1.5));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                nstr = string.Empty;
+            }
+
+            return nstr;
+        }
+
+        public static string SomenteNumerosEPontos(string str)
+        {
+            string nstr = string.Empty;
+
+            try
+            {
+                nstr = Regex.Replace(str, @"(i?)[a-záéíóúâêîôûàèìòù\-()[\]{}\+=*'/@#$:;?|%¨&!^ºª\""]", "",
+                                     RegexOptions.None, TimeSpan.FromSeconds(1.5));
+            }
+
+            catch (RegexMatchTimeoutException)
+            {
+                nstr = string.Empty;
+            }
+
+            return nstr;
         }
 
         public static bool ValidaCampos(Control.ControlCollection ctrls)

@@ -132,6 +132,7 @@
     <Compile Include="Model\CIRCUITO.cs" />
     <Compile Include="Model\CIRCUITO_PROJETO.cs" />
     <Compile Include="Model\DBContext.cs" />
+    <Compile Include="Model\DIMENSAO_CABO.cs" />
     <Compile Include="Model\In\CircuitoDTO.cs" />
     <Compile Include="Model\In\UserDTO.cs" />
     <Compile Include="Model\Model1.Context.cs">

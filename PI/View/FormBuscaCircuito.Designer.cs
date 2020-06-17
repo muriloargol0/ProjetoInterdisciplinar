@@ -28,33 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscaCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.Lista = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             this.SuspendLayout();
             // 
-            // listBox1
+            // txtBuscaCodigo
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 147);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(800, 303);
-            this.listBox1.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(80, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(519, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtBuscaCodigo.Location = new System.Drawing.Point(80, 86);
+            this.txtBuscaCodigo.Name = "txtBuscaCodigo";
+            this.txtBuscaCodigo.Size = new System.Drawing.Size(519, 20);
+            this.txtBuscaCodigo.TabIndex = 1;
+            this.txtBuscaCodigo.TextChanged += new System.EventHandler(this.txtBuscaCodigo_TextChanged);
             // 
             // lblCodigo
             // 
@@ -71,7 +64,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnFechar);
             this.panel1.Controls.Add(this.btnExcluir);
-            this.panel1.Controls.Add(this.btnSalvar);
+            this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.btnNovo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -110,20 +103,20 @@
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             // 
-            // btnSalvar
+            // btnEditar
             // 
-            this.btnSalvar.BackColor = System.Drawing.Color.White;
-            this.btnSalvar.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnSalvar.Location = new System.Drawing.Point(95, 15);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 32;
-            this.btnSalvar.TabStop = false;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnEditar.BackColor = System.Drawing.Color.White;
+            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnEditar.Location = new System.Drawing.Point(95, 15);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 32;
+            this.btnEditar.TabStop = false;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
             // 
             // btnNovo
             // 
@@ -155,6 +148,24 @@
             this.btnBuscar.TabStop = false;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // Lista
+            // 
+            this.Lista.AllowUserToAddRows = false;
+            this.Lista.AllowUserToDeleteRows = false;
+            this.Lista.AllowUserToResizeRows = false;
+            this.Lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Lista.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Lista.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Lista.GridColor = System.Drawing.Color.White;
+            this.Lista.Location = new System.Drawing.Point(0, 133);
+            this.Lista.MultiSelect = false;
+            this.Lista.Name = "Lista";
+            this.Lista.ReadOnly = true;
+            this.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Lista.Size = new System.Drawing.Size(800, 317);
+            this.Lista.TabIndex = 42;
             // 
             // FormBuscaCircuito
             // 
@@ -162,33 +173,34 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.Lista);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblCodigo);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.txtBuscaCodigo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormBuscaCircuito";
             this.Text = "Busca de circuitos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBuscaCircuito_FormClosing);
+            this.Load += new System.EventHandler(this.FormBuscaCircuito_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Lista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscaCodigo;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.DataGridView Lista;
     }
 }

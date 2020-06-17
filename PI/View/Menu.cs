@@ -14,17 +14,24 @@ namespace PI.View
     public partial class Menu : Form
     {
         private UserController _uc = null;
+        private CircuitoController _cc = null;
         public Menu()
         {
             InitializeComponent();
         }
 
+        #region Circuitos
         private void btnCadastrarCircuito_Click(object sender, EventArgs e)
         {
-            FormBuscaCircuito bc = new FormBuscaCircuito();
-            if (!bc.isOpened)
+            //Instancia o controller que será compartilhado entre as duas telas (Busca/Cadastro)
+            if (_cc == null)
+                _cc = new CircuitoController();
+          
+            FormBuscaCircuito bc = new FormBuscaCircuito(_cc);
+
+            if (!_cc.isFormBuscaOpened)
             {
-                bc.isOpened = true;
+                _cc.isFormBuscaOpened = true;
                 bc.MdiParent = this.MdiParent;
                 bc.Show();
             }
@@ -33,11 +40,12 @@ namespace PI.View
                 MessageBox.Show("Esta janela já está aberta!", "Erro",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-                
         }
 
+        #endregion
+
         #region Usuarios
-            
+
         private void btnUsuario_Click(object sender, EventArgs e)
         {
             //Instancia o controller que será compartilhado entre as duas telas

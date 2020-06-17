@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PI.Controller;
+using PI.Model.In;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,31 +16,32 @@ namespace PI.View
 {
     public partial class FormCadastroCircuito : Form
     {
-        private static bool _opened = false;
-        public bool isOpened {
-            get {
-                return _opened;
-            }
+        private CircuitoController _circuitoController = null;
+       
 
-            set {
-                _opened = true;
-            } 
-        }
-        public FormCadastroCircuito()
+        public FormCadastroCircuito(CircuitoController cc)
         {
+            _circuitoController = cc;
             InitializeComponent();
         }
 
+        public CircuitoController GetCircuitoController()
+        {
+            return _circuitoController;
+        }
+
+        public int SetEditId { get; set; }
+
         private void FormCadastroCircuito_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _opened = false;
+            GetCircuitoController().isFormCadastroOpened = false;
         }
 
         private void AtualizaPotenciaAparenteECorrente(object sender, EventArgs e)
         {
             if (txtPotenciaAparente.Text != "    ,")
             {
-                if (txtTensao.Value > 0)
+                if (txtTensao.Text.Length > 0)
                 {
                     decimal.TryParse(txtPotenciaAparente.Text, out decimal pa);
                     int.TryParse(txtTensao.Text, out int tensao);
@@ -70,20 +73,34 @@ namespace PI.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (!Helper.Helper.ValidaCampos(this.Controls))
+            if (Helper.Helper.ValidaCampos(this.Controls))
+            {
+                CircuitoDTO dto = new CircuitoDTO();
+
+                //TODO: Preencher o DTO com os valores dos campos da tela
+                GetCircuitoController().Save(dto, out int idCircuito);
+
+                txtID.Text = idCircuito.ToString();
+            }
+            else
             {
                 Helper.Helper.ShowMessageError("Os campos destacados na cor VERMELHA devem ser preenchidos!", "Campos Obrigatórios");
             }
         }
 
-        private void lblPotenciaAparente_Click(object sender, EventArgs e)
+        private void txtTensao_TextChanged(object sender, EventArgs e)
         {
-
+            txtTensao.Text = Helper.Helper.SomenteNumeros(txtTensao.Text);
         }
 
-        private void txtPotenciaAparente_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void txtFatorPotencia_TextChanged(object sender, EventArgs e)
         {
+            txtFatorPotencia.Text = Helper.Helper.SomenteNumerosEPontos(txtFatorPotencia.Text);
+        }
 
+        private void txtDisjuntor_TextChanged(object sender, EventArgs e)
+        {
+            txtDisjuntor.Text = Helper.Helper.SomenteNumeros(txtDisjuntor.Text);
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using PI.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,28 +14,103 @@ namespace PI.View
 {
     public partial class FormBuscaCircuito : Form
     {
-        private static bool _opened = false;
-        public bool isOpened
-        {
-            get
-            {
-                return _opened;
-            }
 
-            set
+        private CircuitoController _circuitoController = null;
+        private FormCadastroCircuito _cc = null;
+
+        public FormBuscaCircuito(CircuitoController cc)
+        {
+            _circuitoController = cc;
+            InitializeComponent();
+        }
+
+        public CircuitoController GetCircuitoController()
+        {
+            return _circuitoController;
+        }
+
+        private void OpenFormCadastro(int Id = 0)
+        {
+
+            //Se o cadastro já foi fechado, ele limpa a variável que armazena a instância do objeto
+            if (!GetCircuitoController().isFormCadastroOpened)
+                _cc = null;
+
+            //Se for nula, um novo objeto é criado
+            if (_cc == null)
+                _cc = new FormCadastroCircuito(GetCircuitoController());
+
+            //Se houver ID quer dizer que estamos editando um registro
+            if (Id > 0)
+                _cc.SetEditId = Id;
+
+            //Verifica se já existe uma tela aberta
+            if (!GetCircuitoController().isFormCadastroOpened)
             {
-                _opened = true;
+                GetCircuitoController().isFormCadastroOpened = true;
+                //_uc.MdiParent = this.MdiParent;
+                _cc.ShowDialog();
+
+                if (_cc.DialogResult == DialogResult.OK)
+                {
+                    PreencheGrid();
+                }
+            }
+            else
+            {
+                Helper.Helper.ShowMessageError("Esta janela já está aberta!", "Erro");
             }
         }
-        public FormBuscaCircuito()
+
+
+        private void PreencheGrid(string param = "")
         {
-            InitializeComponent();
+            if (param == "")
+            {
+                Lista.DataSource = GetCircuitoController().GetCircuitos();
+            }
+            else
+            {
+                Lista.DataSource = GetCircuitoController().GetCircuitos(param);
+            }
+
+
+            for (int i = 0; i < Lista.ColumnCount; i++)
+            {
+                if (Lista.Columns[i].Name.ToUpper() == "codCircuito".ToUpper())
+                {
+                    Lista.Columns[i].HeaderText = "CÓDIGO";
+                }
+                else
+                {
+                    if (Lista.Columns[i].Name.ToUpper() == "descricao".ToUpper())
+                    {
+                        Lista.Columns[i].HeaderText = "DESCRIÇÃO";
+                        Lista.Columns[i].Width = 300;
+                    }
+                    else
+                    {
+                        if (Lista.Columns[i].Name.ToUpper() == "tipoInstalacao".ToUpper())
+                        {
+                            Lista.Columns[i].HeaderText = "TIPO DE INSTALAÇÃO";
+                            Lista.Columns[i].Width = 300;
+                        }
+                        else
+                        {
+                            Lista.Columns[i].Visible = false;
+                        }
+                    }
+                }
+            }
+
+            Lista.Columns["codCircuito"].DisplayIndex = 0;
+            Lista.Columns["descricao"].DisplayIndex = 1;
+            Lista.Columns["tipoInstalacao"].DisplayIndex = 2;
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            FormCadastroCircuito cc = new FormCadastroCircuito();
-            cc.Show();
+            OpenFormCadastro();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -43,7 +120,30 @@ namespace PI.View
 
         private void FormBuscaCircuito_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _opened = false;
+            GetCircuitoController().isFormBuscaOpened = false;
+        }
+
+        private void FormBuscaCircuito_Load(object sender, EventArgs e)
+        {
+            PreencheGrid();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBuscaCodigo.Text))
+            {
+                PreencheGrid(txtBuscaCodigo.Text.ToString());
+            }
+            else
+            {
+                PreencheGrid();
+            }
+        }
+
+        private void txtBuscaCodigo_TextChanged(object sender, EventArgs e)
+        {
+            txtBuscaCodigo.Text = Helper.Helper.SomenteNumeros(txtBuscaCodigo.Text);
+            txtBuscaCodigo.Select(txtBuscaCodigo.Text.Length, 0);
         }
     }
 }

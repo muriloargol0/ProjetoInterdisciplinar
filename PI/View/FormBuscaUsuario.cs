@@ -122,7 +122,6 @@ namespace PI.View
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            GetUserController().isFormBuscaOpened = false;
             this.Close();
         }
 

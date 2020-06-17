@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PI.Model.In
 {
-    class CircuitoDTO
+    public class CircuitoDTO
     {
 		public int idCircuito { get; set; }
 		public string descricao { get; set; }
@@ -25,5 +25,6 @@ namespace PI.Model.In
 		public int? fases { get; set; }
 		public int? idStatus { get; set; }
 		public int? idUser { get; set; }
+		public string tipoInstalacao { get; set; }
 	}
 }
