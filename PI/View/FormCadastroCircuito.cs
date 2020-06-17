@@ -36,9 +36,16 @@ namespace PI.View
 
         private void AtualizaPotenciaAparenteECorrente(object sender, EventArgs e)
         {
-            int.TryParse(txtPotenciaAparente.Text, out int pa);
-            int.TryParse(txtFatorPotencia.Text, out int fp);
+            if (txtPotenciaAparente.Text != "    ,")
+            {
+                if (txtTensao.Value > 0)
+                {
+                    decimal.TryParse(txtPotenciaAparente.Text, out decimal pa);
+                    int.TryParse(txtTensao.Text, out int tensao);
 
+                    txtCorrenteAlternada.Text = string.Format("00,0", Convert.ToString(pa / (decimal)tensao));
+                }
+            }
         }
 
         private void txtFatorPotencia_Leave(object sender, EventArgs e)
@@ -67,6 +74,16 @@ namespace PI.View
             {
                 Helper.Helper.ShowMessageError("Os campos destacados na cor VERMELHA devem ser preenchidos!", "Campos Obrigatórios");
             }
+        }
+
+        private void lblPotenciaAparente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPotenciaAparente_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

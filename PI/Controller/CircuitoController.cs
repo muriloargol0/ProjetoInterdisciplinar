@@ -28,13 +28,13 @@ namespace PI.Controller
                     c.ID_USER = Helper.Helper.GetIdUser();
                     c.OBSERVACAO = dto.observacao.ToUpper();
                     c.DESCRICAO = dto.descricao.ToUpper();
-                    c.POTENCIA_APARENTE = Convert.ToDecimal(dto.potenciaAparente);
+                    c.POTENCIA_APARENTE = dto.potenciaAparente;
                     c.DISJUNTOR_DR = dto.disjuntorDr;
                     c.DR_AMPER = dto.DrAmper;
                     c.DISJUNTOR = dto.disjuntor;
-                    c.BITOLA_CABO = Convert.ToDecimal(dto.bitolaCabo);
-                    c.CORRENTE_ALTERNADA = Convert.ToDecimal(dto.correnteAlternada);
-                    c.FATOR_POTENCIA = Convert.ToDecimal(dto.fatorPotencia);
+                    c.BITOLA_CABO = dto.bitolaCabo;
+                    c.CORRENTE_ALTERNADA = dto.correnteAlternada;
+                    c.FATOR_POTENCIA = dto.fatorPotencia;
                     c.POTENCIA_ATIVA = dto.potenciaAtiva;
                     c.TENSAO = dto.tensao;
                     c.COD_CIRCUITO = dto.codCircuito;
@@ -42,26 +42,35 @@ namespace PI.Controller
 
                     ctx.CIRCUITO.Add(c);
                     ctx.SaveChanges();
-                    idCircuito = ctx.CIRCUITO.OrderBy(c => c.ID_CIRCUITO).OrderByDescending(x => x.ID_CIRCUITO).Take(1).FirstOrDefault().ID_CIRCUITO;
+                    idCircuito = ctx.CIRCUITO.OrderBy(ci => ci.ID_CIRCUITO).OrderByDescending(x => x.ID_CIRCUITO).Take(1).FirstOrDefault().ID_CIRCUITO;
                 }
                 else
                 {
-                    //var id = dto.idUser;
+                    var id = dto.idCircuito;
 
-                    //var query = ctx.USER.Single(x => x.ID_USER == id);
+                    var query = ctx.CIRCUITO.Single(x => x.ID_CIRCUITO == id);
 
-                    //if (query != null)
-                    //{
-                    //    query.ID_STATUS = 1;
-                    //    query.LOGIN = dto.login.ToUpper();
-                    //    query.NOME = dto.nome.ToUpper();
-                    //    query.SENHA = dto.senha.ToUpper();
-                    //    query.EMAIL = dto.email.ToUpper();
+                    if (query != null)
+                    {
+                        query.ID_STATUS = 1;
+                        query.ID_USER = Helper.Helper.GetIdUser();
+                        query.OBSERVACAO = dto.observacao.ToUpper();
+                        query.DESCRICAO = dto.descricao.ToUpper();
+                        query.POTENCIA_APARENTE = Convert.ToDecimal(dto.potenciaAparente);
+                        query.DISJUNTOR_DR = dto.disjuntorDr;
+                        query.DR_AMPER = dto.DrAmper;
+                        query.DISJUNTOR = dto.disjuntor;
+                        query.BITOLA_CABO = dto.bitolaCabo;
+                        query.CORRENTE_ALTERNADA = dto.correnteAlternada;
+                        query.FATOR_POTENCIA = dto.fatorPotencia;
+                        query.POTENCIA_ATIVA = dto.potenciaAtiva;
+                        query.TENSAO = dto.tensao;
+                        query.COD_CIRCUITO = dto.codCircuito;
+                        query.FASES = dto.fases;
 
-                    //    idCircuito = id;
-                    //    //ctx.USER.Attach(query);
-                    //    ctx.SaveChanges();
-                    //}
+                        idCircuito = id;
+                        ctx.SaveChanges();
+                    }
                 }
             }
 
@@ -72,7 +81,7 @@ namespace PI.Controller
         {
             using (var ctx = new DBContext())
             {
-                var query = ctx.USER.Single(x => x.ID_USER == Id);
+                var query = ctx.CIRCUITO.Single(x => x.ID_CIRCUITO == Id);
 
                 query.ID_STATUS = 2;
                 ctx.SaveChanges();
@@ -80,44 +89,54 @@ namespace PI.Controller
                 return true;
             }
         }
-        public List<UserDTO> GetUsuarios(string parametro = "")
+        public List<CircuitoDTO> GetCircuitos(string parametro = "")
         {
             using (var ctx = new DBContext())
             {
-                List<USER> usr = null;
+                List<CIRCUITO> c = null;
 
-                List<UserDTO> ListaUsuarios = new List<UserDTO>();
+                List<CircuitoDTO> ListaCircuitos = new List<CircuitoDTO>();
 
                 if (string.IsNullOrEmpty(parametro))
                 {
-                    usr = (from user in ctx.USER
-                           where user.ID_STATUS == 1
-                           select user).ToList();
+                    c = (from ci in ctx.CIRCUITO
+                           where ci.ID_STATUS == 1
+                           select ci).ToList();
                 }
                 else
                 {
-                    usr = (from user in ctx.USER
-                           where user.LOGIN.Contains(parametro) && user.ID_STATUS == 1
-                           select user).ToList();
+                    var cod = Convert.ToInt32(parametro);
+                    c = (from ci in ctx.CIRCUITO
+                           where ci.COD_CIRCUITO == cod && ci.ID_STATUS == 1
+                           select ci).ToList();
                 }
 
-                if (usr != null)
+                if (c != null)
                 {
-                    foreach (var item in usr)
+                    foreach (var item in c)
                     {
-                        UserDTO u = new UserDTO();
-                        u.idUser = item.ID_USER;
-                        u.nome = item.NOME;
-                        u.email = item.EMAIL;
-                        u.login = item.LOGIN;
-                        u.senha = item.SENHA;
-                        u.id_status = item.ID_STATUS;
+                        CircuitoDTO ci = new CircuitoDTO();
+                        ci.idStatus = item.ID_STATUS;
+                        ci.idUser = item.ID_USER;
+                        ci.observacao = item.OBSERVACAO.ToUpper();
+                        ci.descricao = item.DESCRICAO.ToUpper();
+                        ci.potenciaAparente = item.POTENCIA_APARENTE;
+                        ci.disjuntorDr = item.DISJUNTOR_DR;
+                        ci.DrAmper = item.DR_AMPER;
+                        ci.disjuntor = item.DISJUNTOR;
+                        ci.bitolaCabo = item.BITOLA_CABO;
+                        ci.correnteAlternada = item.CORRENTE_ALTERNADA;
+                        ci.fatorPotencia = item.FATOR_POTENCIA;
+                        ci.potenciaAtiva = item.POTENCIA_ATIVA;
+                        ci.tensao = item.TENSAO;
+                        ci.codCircuito = item.COD_CIRCUITO;
+                        ci.fases = item.FASES;
 
-                        ListaUsuarios.Add(u);
+                        ListaCircuitos.Add(ci);
                     }
                 }
 
-                return ListaUsuarios;
+                return ListaCircuitos;
             }
         }
     }

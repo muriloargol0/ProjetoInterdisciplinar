@@ -125,12 +125,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CircuitoController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="Model\CIRCUITO.cs" />
     <Compile Include="Model\CIRCUITO_PROJETO.cs" />
     <Compile Include="Model\DBContext.cs" />
+    <Compile Include="Model\In\CircuitoDTO.cs" />
     <Compile Include="Model\In\UserDTO.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
