@@ -134,7 +134,7 @@
             // lblDisjuntor
             // 
             this.lblDisjuntor.AutoSize = true;
-            this.lblDisjuntor.Location = new System.Drawing.Point(13, 186);
+            this.lblDisjuntor.Location = new System.Drawing.Point(13, 183);
             this.lblDisjuntor.Name = "lblDisjuntor";
             this.lblDisjuntor.Size = new System.Drawing.Size(48, 13);
             this.lblDisjuntor.TabIndex = 12;
@@ -173,7 +173,7 @@
             // lblFatorPotencia
             // 
             this.lblFatorPotencia.AutoSize = true;
-            this.lblFatorPotencia.Location = new System.Drawing.Point(506, 135);
+            this.lblFatorPotencia.Location = new System.Drawing.Point(506, 133);
             this.lblFatorPotencia.Name = "lblFatorPotencia";
             this.lblFatorPotencia.Size = new System.Drawing.Size(76, 13);
             this.lblFatorPotencia.TabIndex = 18;
@@ -214,6 +214,7 @@
             this.txtCodigo.Size = new System.Drawing.Size(144, 20);
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.Tag = "1";
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
             // lblFases
             // 
@@ -363,6 +364,7 @@
             this.txtPotenciaAtiva.Size = new System.Drawing.Size(145, 20);
             this.txtPotenciaAtiva.TabIndex = 36;
             this.txtPotenciaAtiva.Tag = "1";
+            this.txtPotenciaAtiva.TextChanged += new System.EventHandler(this.txtPotenciaAtiva_TextChanged);
             // 
             // txtDisjuntorDR
             // 
@@ -372,6 +374,7 @@
             this.txtDisjuntorDR.Size = new System.Drawing.Size(144, 20);
             this.txtDisjuntorDR.TabIndex = 37;
             this.txtDisjuntorDR.Tag = "1";
+            this.txtDisjuntorDR.TextChanged += new System.EventHandler(this.txtDisjuntorDR_TextChanged);
             // 
             // txtDRAmper
             // 
@@ -400,6 +403,7 @@
             this.txtFases.Size = new System.Drawing.Size(144, 20);
             this.txtFases.TabIndex = 40;
             this.txtFases.Tag = "1";
+            this.txtFases.TextChanged += new System.EventHandler(this.txtFases_TextChanged);
             // 
             // FormCadastroCircuito
             // 

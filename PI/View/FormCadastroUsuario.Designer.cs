@@ -57,7 +57,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 56);
+            this.panel1.Size = new System.Drawing.Size(673, 56);
             this.panel1.TabIndex = 32;
             // 
             // btnFechar
@@ -128,7 +128,7 @@
             // 
             this.txtNOME.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNOME.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNOME.Location = new System.Drawing.Point(187, 131);
+            this.txtNOME.Location = new System.Drawing.Point(135, 148);
             this.txtNOME.Name = "txtNOME";
             this.txtNOME.Size = new System.Drawing.Size(415, 20);
             this.txtNOME.TabIndex = 33;
@@ -138,7 +138,7 @@
             // 
             this.txtEMAIL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEMAIL.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEMAIL.Location = new System.Drawing.Point(187, 157);
+            this.txtEMAIL.Location = new System.Drawing.Point(135, 174);
             this.txtEMAIL.Name = "txtEMAIL";
             this.txtEMAIL.Size = new System.Drawing.Size(415, 20);
             this.txtEMAIL.TabIndex = 34;
@@ -149,7 +149,7 @@
             // 
             this.txtLOGIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLOGIN.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtLOGIN.Location = new System.Drawing.Point(187, 183);
+            this.txtLOGIN.Location = new System.Drawing.Point(135, 200);
             this.txtLOGIN.Name = "txtLOGIN";
             this.txtLOGIN.Size = new System.Drawing.Size(415, 20);
             this.txtLOGIN.TabIndex = 35;
@@ -160,7 +160,7 @@
             // 
             this.txtSENHA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSENHA.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSENHA.Location = new System.Drawing.Point(187, 209);
+            this.txtSENHA.Location = new System.Drawing.Point(135, 226);
             this.txtSENHA.Name = "txtSENHA";
             this.txtSENHA.PasswordChar = '*';
             this.txtSENHA.Size = new System.Drawing.Size(415, 20);
@@ -170,7 +170,7 @@
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(131, 133);
+            this.lblNome.Location = new System.Drawing.Point(79, 150);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(35, 13);
             this.lblNome.TabIndex = 37;
@@ -179,7 +179,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(131, 159);
+            this.lblEmail.Location = new System.Drawing.Point(79, 176);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 38;
@@ -188,7 +188,7 @@
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
-            this.lblLogin.Location = new System.Drawing.Point(131, 185);
+            this.lblLogin.Location = new System.Drawing.Point(79, 202);
             this.lblLogin.Name = "lblLogin";
             this.lblLogin.Size = new System.Drawing.Size(33, 13);
             this.lblLogin.TabIndex = 39;
@@ -197,7 +197,7 @@
             // lblSenha
             // 
             this.lblSenha.AutoSize = true;
-            this.lblSenha.Location = new System.Drawing.Point(131, 211);
+            this.lblSenha.Location = new System.Drawing.Point(79, 228);
             this.lblSenha.Name = "lblSenha";
             this.lblSenha.Size = new System.Drawing.Size(38, 13);
             this.lblSenha.TabIndex = 40;
@@ -210,7 +210,7 @@
             this.btnVisualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVisualizar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVisualizar.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnVisualizar.Location = new System.Drawing.Point(608, 207);
+            this.btnVisualizar.Location = new System.Drawing.Point(556, 224);
             this.btnVisualizar.Name = "btnVisualizar";
             this.btnVisualizar.Size = new System.Drawing.Size(19, 23);
             this.btnVisualizar.TabIndex = 35;
@@ -223,7 +223,7 @@
             // 
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtID.Location = new System.Drawing.Point(187, 105);
+            this.txtID.Location = new System.Drawing.Point(135, 122);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(415, 20);
             this.txtID.TabIndex = 41;
@@ -234,7 +234,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(673, 347);
             this.ControlBox = false;
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnVisualizar);

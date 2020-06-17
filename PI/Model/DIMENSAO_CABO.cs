@@ -17,5 +17,7 @@
         public string TIPO_INSTALACAO { get; set; }
 
         public int FASE { get; set; }
+
+        public int CONDUTORES { get; set; }
     }
 }

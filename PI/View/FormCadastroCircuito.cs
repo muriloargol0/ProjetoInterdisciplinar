@@ -39,6 +39,13 @@ namespace PI.View
 
         private void AtualizaPotenciaAparenteECorrente(object sender, EventArgs e)
         {
+            if(((TextBox)(sender)).Name == "txtFatorPotencia"){
+                if (!Helper.Helper.ValidaCasasVirgula(((TextBox)(sender)).Text, 4, 2))
+                {
+                    ((TextBox)(sender)).Text = string.Empty;
+                }
+            }
+
             if (txtPotenciaAparente.Text != "    ,")
             {
                 if (txtTensao.Text.Length > 0)
@@ -101,6 +108,26 @@ namespace PI.View
         private void txtDisjuntor_TextChanged(object sender, EventArgs e)
         {
             txtDisjuntor.Text = Helper.Helper.SomenteNumeros(txtDisjuntor.Text);
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+            txtCodigo.Text = Helper.Helper.SomenteNumeros(txtCodigo.Text);
+        }
+
+        private void txtPotenciaAtiva_TextChanged(object sender, EventArgs e)
+        {
+            txtPotenciaAtiva.Text = Helper.Helper.SomenteNumeros(txtPotenciaAtiva.Text);
+        }
+
+        private void txtDisjuntorDR_TextChanged(object sender, EventArgs e)
+        {
+            txtDisjuntorDR.Text = Helper.Helper.SomenteNumeros(txtDisjuntorDR.Text);
+        }
+
+        private void txtFases_TextChanged(object sender, EventArgs e)
+        {
+            txtFases.Text = Helper.Helper.SomenteNumeros(txtFases.Text);
         }
     }
 }

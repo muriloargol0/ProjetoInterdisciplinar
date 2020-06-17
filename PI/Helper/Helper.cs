@@ -103,6 +103,37 @@ namespace PI.Helper
             return nstr;
         }
 
+        public static bool ValidaCasasVirgula(string str, int casasAntesVirgula, int casasPosVirgula)
+        {
+            var nstrAntes = string.Empty;
+            var nstrDepois = string.Empty;
+
+            if (casasPosVirgula > 0)
+            {
+                //Valida se somente as casas finais correspondem ao valor esperado
+                nstrDepois = str.Substring(str.IndexOf(",") + 1, (str.Length) - (str.IndexOf(",") + 1));
+
+                if (nstrDepois.Length > casasPosVirgula)
+                {
+                    ShowMessageError($"Esse campo trabalha apenas com {casasPosVirgula} casas após a vírgula!", "Valor incompatível");
+                    return false;
+                }
+            }
+
+            if(casasAntesVirgula > 0)
+            {
+                nstrAntes = str.Substring(0, str.IndexOf(","));
+
+                if (nstrAntes.Length > casasAntesVirgula)
+                {
+                    ShowMessageError($"Esse campo trabalha apenas com {casasAntesVirgula} casas antes da vírgula!", "Valor incompatível");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public static bool ValidaCampos(Control.ControlCollection ctrls)
         {
             var isValid = true;

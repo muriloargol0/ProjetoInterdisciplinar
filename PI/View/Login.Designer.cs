@@ -39,7 +39,7 @@
             this.txtLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLogin.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtLogin.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLogin.Location = new System.Drawing.Point(90, 229);
+            this.txtLogin.Location = new System.Drawing.Point(85, 83);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(232, 33);
             this.txtLogin.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSenha.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.Location = new System.Drawing.Point(90, 267);
+            this.txtSenha.Location = new System.Drawing.Point(85, 121);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(232, 33);
             this.txtSenha.TabIndex = 1;
@@ -66,7 +66,7 @@
             this.btnENTRAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnENTRAR.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnENTRAR.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnENTRAR.Location = new System.Drawing.Point(90, 314);
+            this.btnENTRAR.Location = new System.Drawing.Point(85, 168);
             this.btnENTRAR.Name = "btnENTRAR";
             this.btnENTRAR.Size = new System.Drawing.Size(232, 33);
             this.btnENTRAR.TabIndex = 2;
@@ -80,7 +80,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.button1.Location = new System.Drawing.Point(90, 353);
+            this.button1.Location = new System.Drawing.Point(85, 207);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(232, 33);
             this.button1.TabIndex = 3;
@@ -93,7 +93,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(401, 448);
+            this.ClientSize = new System.Drawing.Size(401, 311);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnENTRAR);
