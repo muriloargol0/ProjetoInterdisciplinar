@@ -138,7 +138,7 @@ namespace PI.View
                 existe = GetUserController().VerificaSeExiste("email", txtEMAIL.Text, Convert.ToInt32(id));
             if (existe)
             {
-                txtEMAIL.ForeColor = Color.Red;
+                txtEMAIL.ForeColor = Color.Yellow;
                 Helper.Helper.ShowMessageError("Este e-mail já está em uso!", "Erro de Validação");
                 txtEMAIL.Text = string.Empty;
                 txtEMAIL.ForeColor = Color.Black;
@@ -157,7 +157,7 @@ namespace PI.View
 
             if (existe)
             {
-                txtLOGIN.ForeColor = Color.Red;
+                txtLOGIN.ForeColor = Color.Yellow;
                 Helper.Helper.ShowMessageError("Este login já está em uso!", "Erro de Validação");
                 txtLOGIN.Text = string.Empty;
                 txtLOGIN.ForeColor = Color.Black;

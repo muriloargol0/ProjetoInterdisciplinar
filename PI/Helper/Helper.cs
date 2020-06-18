@@ -48,6 +48,8 @@ namespace PI.Helper
                     ((NumericUpDown)(itens)).Value = 0;
                 if (itens is RichTextBox)
                     ((RichTextBox)(itens)).Text = string.Empty;
+                if (itens is ComboBox)
+                    ((ComboBox)(itens)).SelectedIndex = -1;
             }
         }
 
@@ -215,8 +217,26 @@ namespace PI.Helper
                         }
                     }
                 }
-            }
 
+                if (itens is ComboBox)
+                {
+                    if (Convert.ToInt32(((ComboBox)(itens)).Tag) == 1)
+                    {
+                        if (((ComboBox)(itens)).Text == string.Empty)
+                        {
+                            isValid = false;
+                            ((ComboBox)(itens)).BackColor = Color.Red;
+                            ((ComboBox)(itens)).ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            isValid = true;
+                            ((ComboBox)(itens)).BackColor = Color.White;
+                            ((ComboBox)(itens)).ForeColor = Color.Black;
+                        }
+                    }
+                }
+            }
             return isValid;
         }
     }

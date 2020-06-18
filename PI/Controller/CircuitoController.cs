@@ -40,6 +40,7 @@ namespace PI.Controller
                     c.TENSAO = dto.tensao;
                     c.COD_CIRCUITO = dto.codCircuito;
                     c.FASES = dto.fases;
+                    c.TIPO_INSTALACAO = dto.tipoInstalacao;
 
                     ctx.CIRCUITO.Add(c);
                     ctx.SaveChanges();
@@ -68,6 +69,7 @@ namespace PI.Controller
                         query.TENSAO = dto.tensao;
                         query.COD_CIRCUITO = dto.codCircuito;
                         query.FASES = dto.fases;
+                        query.TIPO_INSTALACAO = dto.tipoInstalacao;
 
                         idCircuito = id;
                         ctx.SaveChanges();
@@ -77,7 +79,6 @@ namespace PI.Controller
 
             return true;
         }
-
         public bool Delete(int Id)
         {
             using (var ctx = new DBContext())
@@ -139,6 +140,21 @@ namespace PI.Controller
 
                 return ListaCircuitos;
             }
+        }
+
+        public string GetBitolaCabo(string tipoInstalacao, int fase, decimal corrente)
+        {
+            string bitolaCabo = string.Empty;
+
+            using (var ctx = new DBContext())
+            {
+                bitolaCabo = (from dc in ctx.DIMENSAO_CABO
+                              where dc.TIPO_INSTALACAO == tipoInstalacao
+                                && dc.FASE == fase
+                                && dc.CONDUTORES > corrente
+                              select dc).FirstOrDefault().DIAMENTRO_CABO.ToString();
+            }
+            return bitolaCabo;
         }
     }
 }

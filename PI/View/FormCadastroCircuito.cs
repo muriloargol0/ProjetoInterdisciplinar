@@ -37,15 +37,9 @@ namespace PI.View
             GetCircuitoController().isFormCadastroOpened = false;
         }
 
-        private void AtualizaPotenciaAparenteECorrente(object sender, EventArgs e)
+        private void AtualizaCorrente(object sender, EventArgs e)
         {
-            if(((TextBox)(sender)).Name == "txtFatorPotencia"){
-                if (!Helper.Helper.ValidaCasasVirgula(((TextBox)(sender)).Text, 4, 2))
-                {
-                    ((TextBox)(sender)).Text = string.Empty;
-                }
-            }
-
+            
             if (txtPotenciaAparente.Text != "    ,")
             {
                 if (txtTensao.Text.Length > 0)
@@ -53,18 +47,34 @@ namespace PI.View
                     decimal.TryParse(txtPotenciaAparente.Text, out decimal pa);
                     int.TryParse(txtTensao.Text, out int tensao);
 
-                    txtCorrenteAlternada.Text = string.Format("00,0", Convert.ToString(pa / (decimal)tensao));
+                    var corrente = Convert.ToString(pa / (decimal)tensao);
+                    var co = corrente.Substring(corrente.IndexOf(",") + 1, corrente.Length - (corrente.IndexOf(",") + 1));
+
+                    if(co.Length > 2)
+                        txtCorrenteAlternada.Text = corrente.Substring(0, corrente.IndexOf(",") + 3);
                 }
             }
         }
 
         private void txtFatorPotencia_Leave(object sender, EventArgs e)
         {
-            MaskedTextBox t = (MaskedTextBox)sender;
+            TextBox t = (TextBox)sender;
 
-            if (Convert.ToDecimal(t.Text) > 1)
+            if (!Helper.Helper.ValidaCasasVirgula(t.Text, 0, 2))
             {
-                Helper.Helper.ShowMessageError("Valor incompatível, por favor digite um número entre 0 e 1", "Erro de validação");
+                ((TextBox)(sender)).Text = string.Empty;
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(t.Text))
+                {
+                    if (Convert.ToDecimal(t.Text) > 1)
+                    {
+                        Helper.Helper.ShowMessageError("Valor incompatível, por favor digite um número entre 0 e 1", "Erro de validação");
+                        t.Text = string.Empty;
+                    }
+                }
+
             }
         }
 
@@ -84,6 +94,24 @@ namespace PI.View
             {
                 CircuitoDTO dto = new CircuitoDTO();
 
+                dto.idCircuito = Convert.ToInt32(txtID.Text == "" ? "0" : txtID.Text);
+                dto.descricao = txtDescricao.Text;
+                dto.potenciaAparente = Convert.ToDecimal(txtPotenciaAparente.Text);
+                dto.disjuntorDr = Convert.ToInt32(txtDisjuntorDR.Text);
+                dto.DrAmper = Convert.ToInt32(txtDRAmper.Text);
+                dto.observacao = txtObservacao.Text;
+                dto.disjuntor = Convert.ToInt32(txtDisjuntor.Text);
+                dto.bitolaCabo = Convert.ToDecimal(txtBitolaCabo.Text);
+                dto.correnteAlternada = Convert.ToDecimal(txtCorrenteAlternada.Text);
+                dto.fatorPotencia = Convert.ToDecimal(txtFatorPotencia);
+                dto.potenciaAtiva = Convert.ToInt32(txtPotenciaAtiva.Text);
+                dto.tensao = Convert.ToInt32(txtTensao.Text);
+                dto.codCircuito = Convert.ToInt32(txtCodigo.Text);
+                dto.fases = Convert.ToInt32(txtFases.Text);
+                dto.idStatus = 1;
+                dto.idUser = Helper.Helper.GetIdUser();
+                dto.tipoInstalacao = txtTipoInstalacao.Text;
+                
                 //TODO: Preencher o DTO com os valores dos campos da tela
                 GetCircuitoController().Save(dto, out int idCircuito);
 
@@ -128,6 +156,38 @@ namespace PI.View
         private void txtFases_TextChanged(object sender, EventArgs e)
         {
             txtFases.Text = Helper.Helper.SomenteNumeros(txtFases.Text);
+
+            if (!string.IsNullOrEmpty(txtFases.Text))
+            {
+                if (Convert.ToInt32(txtFases.Text) < 0 || Convert.ToInt32(txtFases.Text) > 3)
+                {
+                    Helper.Helper.ShowMessageError("Este campo aceita apenas valores maiores que 0 e menores ou igual a 2", "Valor incompatível");
+                }
+            }
+        }
+
+        private void txtTipoInstalacao_TextChanged(object sender, EventArgs e)
+        {
+            if(txtTipoInstalacao.SelectedIndex > 0)
+            {
+                if(!string.IsNullOrEmpty(txtTipoInstalacao.Text) && !string.IsNullOrEmpty(txtFases.Text) && !string.IsNullOrEmpty(txtCorrenteAlternada.Text))
+                {
+                    //Se a fase for 3, o diametro do cabo é o mesmo que o 2
+                    var fase = Convert.ToInt32(txtFases.Text); 
+                    txtBitolaCabo.Text = GetCircuitoController().GetBitolaCabo(txtTipoInstalacao.Text, fase == 3 ? 2 : fase, Convert.ToDecimal(txtCorrenteAlternada.Text));
+                }
+            }
+        }
+
+        private void txtPotenciaAparente_Enter(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtPotenciaAtiva.Text) && !string.IsNullOrEmpty(txtFatorPotencia.Text))
+            {
+                int.TryParse(txtPotenciaAtiva.Text, out int pa);
+                decimal.TryParse(txtFatorPotencia.Text, out decimal fp);
+
+                txtPotenciaAparente.Text = Convert.ToString(pa / (decimal)fp);
+            }
         }
     }
 }
