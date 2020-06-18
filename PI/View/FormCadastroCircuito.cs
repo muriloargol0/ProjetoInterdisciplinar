@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PI.Controller;
+using PI.Database;
 using PI.Model.In;
 using System;
 using System.Collections.Generic;
@@ -85,7 +86,8 @@ namespace PI.View
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -103,7 +105,7 @@ namespace PI.View
                 dto.disjuntor = Convert.ToInt32(txtDisjuntor.Text);
                 dto.bitolaCabo = Convert.ToDecimal(txtBitolaCabo.Text);
                 dto.correnteAlternada = Convert.ToDecimal(txtCorrenteAlternada.Text);
-                dto.fatorPotencia = Convert.ToDecimal(txtFatorPotencia);
+                dto.fatorPotencia = Convert.ToDecimal(txtFatorPotencia.Text);
                 dto.potenciaAtiva = Convert.ToInt32(txtPotenciaAtiva.Text);
                 dto.tensao = Convert.ToInt32(txtTensao.Text);
                 dto.codCircuito = Convert.ToInt32(txtCodigo.Text);
@@ -114,6 +116,15 @@ namespace PI.View
                 
                 //TODO: Preencher o DTO com os valores dos campos da tela
                 GetCircuitoController().Save(dto, out int idCircuito);
+
+                if (string.IsNullOrEmpty(txtID.Text))
+                {
+                    MessageBox.Show("Circuito cadastrado com sucesso!");
+                }
+                else
+                {
+                    MessageBox.Show("Circuito alterado com sucesso!");
+                }
 
                 txtID.Text = idCircuito.ToString();
             }
@@ -187,6 +198,68 @@ namespace PI.View
                 decimal.TryParse(txtFatorPotencia.Text, out decimal fp);
 
                 txtPotenciaAparente.Text = Convert.ToString(pa / (decimal)fp);
+            }
+        }
+
+        private void lblFases_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void preencheCampos(CIRCUITO dto)
+        {
+            txtID.Text = dto.ID_CIRCUITO.ToString();
+            txtID.Visible = false;
+            txtBitolaCabo.Text = dto.BITOLA_CABO.ToString();
+            txtCodigo.Text = dto.COD_CIRCUITO.ToString();
+            txtCorrenteAlternada.Text = dto.CORRENTE_ALTERNADA.ToString();
+            txtDescricao.Text = dto.DESCRICAO.ToUpper();
+            txtDisjuntor.Text = dto.DISJUNTOR.ToString();
+            txtDisjuntorDR.Text = dto.DISJUNTOR_DR.ToString();
+            txtDRAmper.Text = dto.DR_AMPER.ToString();
+            txtFases.Text = dto.FASES.ToString();
+            txtFatorPotencia.Text = dto.FATOR_POTENCIA.ToString();
+            txtObservacao.Text = dto.OBSERVACAO.ToUpper();
+            txtPotenciaAparente.Text = dto.POTENCIA_APARENTE.ToString();
+            txtPotenciaAtiva.Text = dto.POTENCIA_ATIVA.ToString();
+            txtTensao.Text = dto.TENSAO.ToString();
+            txtTipoInstalacao.Text = dto.TIPO_INSTALACAO.ToUpper();
+        }
+
+        private void FormCadastroCircuito_Load(object sender, EventArgs e)
+        {
+            if (SetEditId > 0)
+            {
+                using (var ctx = new DBContext())
+                {
+                    var edit = ctx.CIRCUITO.Where(x => x.ID_CIRCUITO == SetEditId).FirstOrDefault();
+                    if (edit == null)
+                        throw new Exception("O circuito não pode ser editado pois não foi encontrado.");
+
+                    preencheCampos(edit);
+                }
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                string message = $"Deseja realmente excluir o circuito {txtDescricao.Text} ?";
+                string caption = "Excluir";
+                var result = MessageBox.Show(message, caption,
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    GetCircuitoController().Delete(Convert.ToInt32(txtID.Text));
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            else
+            {
+                Helper.Helper.ShowMessageError("Não é possível excluir um circuito que ainda não foi registrado!", "Erro de Exclusão");
             }
         }
     }

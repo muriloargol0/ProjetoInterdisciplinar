@@ -22,7 +22,7 @@ namespace PI.Controller
             using (var ctx = new DBContext())
             {
                 //Se não houver ID salva um novo registro
-                if (dto.idUser == 0)
+                if (dto.idCircuito == 0)
                 {
                     var c = new CIRCUITO();
                     c.ID_STATUS = 1;
@@ -118,6 +118,7 @@ namespace PI.Controller
                     foreach (var item in c)
                     {
                         CircuitoDTO ci = new CircuitoDTO();
+                        ci.idCircuito = item.ID_CIRCUITO;
                         ci.idStatus = item.ID_STATUS;
                         ci.idUser = item.ID_USER;
                         ci.observacao = item.OBSERVACAO.ToUpper();

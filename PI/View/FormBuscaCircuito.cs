@@ -77,35 +77,43 @@ namespace PI.View
 
             for (int i = 0; i < Lista.ColumnCount; i++)
             {
-                if (Lista.Columns[i].Name.ToUpper() == "codCircuito".ToUpper())
+                if (Lista.Columns[i].Name.ToUpper() == "idCircuito".ToUpper())
                 {
-                    Lista.Columns[i].HeaderText = "CÓDIGO";
+                    Lista.Columns[i].HeaderText = "ID";
                 }
                 else
                 {
-                    if (Lista.Columns[i].Name.ToUpper() == "descricao".ToUpper())
+                    if (Lista.Columns[i].Name.ToUpper() == "codCircuito".ToUpper())
                     {
-                        Lista.Columns[i].HeaderText = "DESCRIÇÃO";
-                        Lista.Columns[i].Width = 300;
+                        Lista.Columns[i].HeaderText = "CÓDIGO";
                     }
                     else
                     {
-                        if (Lista.Columns[i].Name.ToUpper() == "tipoInstalacao".ToUpper())
+                        if (Lista.Columns[i].Name.ToUpper() == "descricao".ToUpper())
                         {
-                            Lista.Columns[i].HeaderText = "TIPO DE INSTALAÇÃO";
+                            Lista.Columns[i].HeaderText = "DESCRIÇÃO";
                             Lista.Columns[i].Width = 300;
                         }
                         else
                         {
-                            Lista.Columns[i].Visible = false;
+                            if (Lista.Columns[i].Name.ToUpper() == "tipoInstalacao".ToUpper())
+                            {
+                                Lista.Columns[i].HeaderText = "TIPO DE INSTALAÇÃO";
+                                Lista.Columns[i].Width = 300;
+                            }
+                            else
+                            {
+                                Lista.Columns[i].Visible = false;
+                            }
                         }
                     }
                 }
             }
 
-            Lista.Columns["codCircuito"].DisplayIndex = 0;
-            Lista.Columns["descricao"].DisplayIndex = 1;
-            Lista.Columns["tipoInstalacao"].DisplayIndex = 2;
+            Lista.Columns["idCircuito"].DisplayIndex = 0;
+            Lista.Columns["codCircuito"].DisplayIndex = 1;
+            Lista.Columns["descricao"].DisplayIndex = 2;
+            Lista.Columns["tipoInstalacao"].DisplayIndex = 3;
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -144,6 +152,16 @@ namespace PI.View
         {
             txtBuscaCodigo.Text = Helper.Helper.SomenteNumeros(txtBuscaCodigo.Text);
             txtBuscaCodigo.Select(txtBuscaCodigo.Text.Length, 0);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            OpenFormCadastro(Convert.ToInt32(Lista.CurrentRow.Cells[0].Value.ToString()));
+        }
+
+        private void Lista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            OpenFormCadastro(Convert.ToInt32(Lista.CurrentRow.Cells[0].Value.ToString()));
         }
     }
 }

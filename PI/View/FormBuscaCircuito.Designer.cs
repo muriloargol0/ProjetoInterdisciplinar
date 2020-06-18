@@ -117,6 +117,7 @@
             this.btnEditar.TabStop = false;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnNovo
             // 
@@ -166,6 +167,7 @@
             this.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Lista.Size = new System.Drawing.Size(800, 317);
             this.Lista.TabIndex = 42;
+            this.Lista.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_CellDoubleClick);
             // 
             // FormBuscaCircuito
             // 

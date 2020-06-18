@@ -120,6 +120,17 @@ namespace PI.View
                 dto.email = txtEMAIL.Text;
 
                 GetUserController().Save(dto, out int IdUser);
+
+                if(string.IsNullOrEmpty(txtID.Text))
+                {
+                    MessageBox.Show("Usuário cadastrado com sucesso!");
+                }
+                else
+                {
+                    MessageBox.Show("Usuário alterado com sucesso!");
+                }
+                
+
                 txtID.Text = IdUser.ToString();
             }
             else
