@@ -45,6 +45,10 @@
             this.Lista = new System.Windows.Forms.DataGridView();
             this.lblQO = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ENTRADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRemoverItem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
@@ -78,6 +82,7 @@
             this.btnFechar.TabStop = false;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnExcluir
             // 
@@ -93,6 +98,7 @@
             this.btnExcluir.TabStop = false;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSalvar
             // 
@@ -164,6 +170,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnRemoverItem);
             this.groupBox1.Controls.Add(this.Lista);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.txtDescricaoCircuito);
@@ -228,6 +235,10 @@
             this.Lista.AllowUserToResizeRows = false;
             this.Lista.BackgroundColor = System.Drawing.Color.White;
             this.Lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CODIGO,
+            this.DESCRICAO,
+            this.ENTRADA});
             this.Lista.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Lista.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Lista.GridColor = System.Drawing.Color.White;
@@ -258,6 +269,41 @@
             this.textBox2.TabIndex = 43;
             this.textBox2.Tag = "1";
             // 
+            // CODIGO
+            // 
+            this.CODIGO.HeaderText = "CODIGO";
+            this.CODIGO.Name = "CODIGO";
+            this.CODIGO.ReadOnly = true;
+            // 
+            // DESCRICAO
+            // 
+            this.DESCRICAO.HeaderText = "DESCRIÇÃO";
+            this.DESCRICAO.Name = "DESCRICAO";
+            this.DESCRICAO.ReadOnly = true;
+            this.DESCRICAO.Width = 400;
+            // 
+            // ENTRADA
+            // 
+            this.ENTRADA.HeaderText = "ENTRADA";
+            this.ENTRADA.Name = "ENTRADA";
+            this.ENTRADA.ReadOnly = true;
+            // 
+            // btnRemoverItem
+            // 
+            this.btnRemoverItem.BackColor = System.Drawing.Color.White;
+            this.btnRemoverItem.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnRemoverItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverItem.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverItem.ForeColor = System.Drawing.Color.Red;
+            this.btnRemoverItem.Location = new System.Drawing.Point(608, 32);
+            this.btnRemoverItem.Name = "btnRemoverItem";
+            this.btnRemoverItem.Size = new System.Drawing.Size(46, 23);
+            this.btnRemoverItem.TabIndex = 43;
+            this.btnRemoverItem.TabStop = false;
+            this.btnRemoverItem.Text = "-";
+            this.btnRemoverItem.UseVisualStyleBackColor = false;
+            this.btnRemoverItem.Click += new System.EventHandler(this.btnRemoverItem_Click);
+            // 
             // FormCadastroProjeto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +325,7 @@
             this.Name = "FormCadastroProjeto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Projetos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCadastroProjeto_FormClosing);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -307,5 +354,9 @@
         private System.Windows.Forms.DataGridView Lista;
         private System.Windows.Forms.Label lblQO;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnRemoverItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DESCRICAO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ENTRADA;
     }
 }

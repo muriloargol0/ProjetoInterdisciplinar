@@ -121,13 +121,23 @@ namespace PI.Controller
 
                 if(query != null)
                 {
-                    
-
                     dto.bitolaCabo = query.BITOLA_CABO;
                     dto.codCircuito = query.COD_CIRCUITO;
                     dto.correnteAlternada = query.CORRENTE_ALTERNADA;
-
-
+                    dto.descricao = query.DESCRICAO;
+                    dto.disjuntor = query.DISJUNTOR;
+                    dto.disjuntorDr = query.DISJUNTOR_DR;
+                    dto.DrAmper = query.DR_AMPER;
+                    dto.fases = query.FASES;
+                    dto.fatorPotencia = query.FATOR_POTENCIA;
+                    dto.idCircuito = query.ID_CIRCUITO;
+                    dto.idStatus = query.ID_STATUS;
+                    dto.idUser = query.ID_USER;
+                    dto.observacao = query.OBSERVACAO;
+                    dto.potenciaAparente = query.POTENCIA_APARENTE;
+                    dto.potenciaAtiva = query.POTENCIA_ATIVA;
+                    dto.tensao = query.TENSAO;
+                    dto.tipoInstalacao = query.TIPO_INSTALACAO;
                 }
             }
             return dto;
