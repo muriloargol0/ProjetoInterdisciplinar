@@ -1,4 +1,5 @@
-﻿using PI.Controller;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using PI.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,5 +28,27 @@ namespace PI.View
             return _pc;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //TODO: Listar o circuito no gride + a entrada que ele pertence
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+            Helper.Helper.SomenteCaracteres(txtCodigo.Text);
+        }
+
+        private void txtEntradas_TextChanged(object sender, EventArgs e)
+        {
+            Helper.Helper.SomenteNumeros(txtEntradas.Text);
+        }
+
+        private void txtCodigoCircuito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+
+            }
+        }
     }
 }

@@ -157,6 +157,7 @@
             this.Lista.AllowUserToAddRows = false;
             this.Lista.AllowUserToDeleteRows = false;
             this.Lista.AllowUserToResizeRows = false;
+            this.Lista.BackgroundColor = System.Drawing.Color.White;
             this.Lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Lista.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Lista.Dock = System.Windows.Forms.DockStyle.Bottom;

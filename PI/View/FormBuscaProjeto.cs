@@ -84,7 +84,7 @@ namespace PI.View
                     if (Lista.Columns[i].Name.ToUpper() == "descricao".ToUpper())
                     {
                         Lista.Columns[i].HeaderText = "DESCRIÇÃO";
-                        Lista.Columns[i].Width = 300;
+                        Lista.Columns[i].Width = 500;
                     }
                     else
                     {
@@ -109,7 +109,8 @@ namespace PI.View
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            OpenFormCadastro(Convert.ToInt32(Lista.CurrentRow.Cells[0].Value.ToString()));
+            if(Lista.SelectedRows.Count > 0)
+                OpenFormCadastro(Convert.ToInt32(Lista.CurrentRow.Cells[0].Value.ToString()));
         }
 
         private void Lista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -147,6 +148,18 @@ namespace PI.View
         private void FormBuscaProjeto_Load(object sender, EventArgs e)
         {
             PreencheGrid();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBuscaDescricao.Text))
+            {
+                PreencheGrid(txtBuscaDescricao.Text.ToString());
+            }
+            else
+            {
+                PreencheGrid();
+            }
         }
     }
 }

@@ -35,9 +35,10 @@
             // 
             // btnCadastrarCircuito
             // 
+            this.btnCadastrarCircuito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastrarCircuito.Location = new System.Drawing.Point(21, 42);
             this.btnCadastrarCircuito.Name = "btnCadastrarCircuito";
-            this.btnCadastrarCircuito.Size = new System.Drawing.Size(237, 121);
+            this.btnCadastrarCircuito.Size = new System.Drawing.Size(237, 69);
             this.btnCadastrarCircuito.TabIndex = 0;
             this.btnCadastrarCircuito.Text = "CIRCUITO";
             this.btnCadastrarCircuito.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // btnUsuario
             // 
+            this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsuario.Location = new System.Drawing.Point(548, 42);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(237, 121);
+            this.btnUsuario.Size = new System.Drawing.Size(237, 69);
             this.btnUsuario.TabIndex = 1;
             this.btnUsuario.Text = "USUÁRIO";
             this.btnUsuario.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // btnProjeto
             // 
+            this.btnProjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProjeto.Location = new System.Drawing.Point(286, 42);
             this.btnProjeto.Name = "btnProjeto";
-            this.btnProjeto.Size = new System.Drawing.Size(237, 121);
+            this.btnProjeto.Size = new System.Drawing.Size(237, 69);
             this.btnProjeto.TabIndex = 2;
             this.btnProjeto.Text = "PROJETO";
             this.btnProjeto.UseVisualStyleBackColor = true;
@@ -67,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 197);
+            this.ClientSize = new System.Drawing.Size(807, 145);
             this.ControlBox = false;
             this.Controls.Add(this.btnProjeto);
             this.Controls.Add(this.btnUsuario);

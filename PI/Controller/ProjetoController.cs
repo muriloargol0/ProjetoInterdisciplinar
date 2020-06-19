@@ -1,6 +1,7 @@
 ﻿using PI.Database;
 using PI.Model.In;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -106,6 +107,31 @@ namespace PI.Controller
             }
         }
 
+        public CircuitoDTO GetCircuito(string cod)
+        {
+            int codigo = Convert.ToInt32(cod);
+
+            CircuitoDTO dto = new CircuitoDTO();
+
+            using (var ctx = new DBContext())
+            {
+                var query = (from c in ctx.CIRCUITO
+                             where c.COD_CIRCUITO == codigo && c.ID_STATUS == 1
+                             select c).FirstOrDefault();
+
+                if(query != null)
+                {
+                    
+
+                    dto.bitolaCabo = query.BITOLA_CABO;
+                    dto.codCircuito = query.COD_CIRCUITO;
+                    dto.correnteAlternada = query.CORRENTE_ALTERNADA;
+
+
+                }
+            }
+            return dto;
+        }
         public bool VerificaSeExiste(string name, string value, int ID)
         {
             using (var ctx = new DBContext())
