@@ -252,7 +252,7 @@
             this.MinimizeBox = false;
             this.Name = "FormCadastroUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormCadastroUsuario";
+            this.Text = "Cadastro de Usuários";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCadastroUsuario_FormClosing);
             this.Load += new System.EventHandler(this.FormCadastroUsuario_Load);
             this.panel1.ResumeLayout(false);

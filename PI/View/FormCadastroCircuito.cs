@@ -262,5 +262,17 @@ namespace PI.View
                 Helper.Helper.ShowMessageError("Não é possível excluir um circuito que ainda não foi registrado!", "Erro de Exclusão");
             }
         }
+
+        private void txtCodigo_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtID.Text))
+            {
+                if (GetCircuitoController().ValidaExisteCodCircuito(Convert.ToInt32(txtCodigo.Text)))
+                {
+                    Helper.Helper.ShowMessageError("Já existe um circuito cadastrado com esse código!", "Erro de Validação");
+                    txtCodigo.Text = string.Empty;
+                }
+            }
+        }
     }
 }

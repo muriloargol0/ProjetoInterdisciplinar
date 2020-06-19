@@ -187,7 +187,7 @@
             this.MinimizeBox = false;
             this.Name = "FormBuscaUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormBuscaUsuario";
+            this.Text = "Buscar Usuários";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBuscaUsuario_FormClosing);
             this.Load += new System.EventHandler(this.FormBuscaUsuario_Load);
             this.panel1.ResumeLayout(false);

@@ -15,6 +15,7 @@ namespace PI.View
     {
         private UserController _uc = null;
         private CircuitoController _cc = null;
+        private ProjetoController _pc = null;
         public Menu()
         {
             InitializeComponent();
@@ -89,6 +90,27 @@ namespace PI.View
                 }
             }
         #endregion
+        }
+
+        private void btnProjeto_Click(object sender, EventArgs e)
+        {
+            //Instancia o controller que será compartilhado entre as duas telas (Busca/Cadastro)
+            if (_pc == null)
+                _pc = new ProjetoController();
+
+            FormBuscaProjeto bp = new FormBuscaProjeto(_pc);
+
+            if (!_pc.isFormBuscaOpened)
+            {
+                _pc.isFormBuscaOpened = true;
+                bp.MdiParent = this.MdiParent;
+                bp.Show();
+            }
+            else
+            {
+                MessageBox.Show("Esta janela já está aberta!", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

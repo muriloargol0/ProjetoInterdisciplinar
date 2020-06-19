@@ -163,5 +163,22 @@ namespace PI.View
         {
             OpenFormCadastro(Convert.ToInt32(Lista.CurrentRow.Cells[0].Value.ToString()));
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (Lista.SelectedRows.Count > 0)
+            {
+                string message = $"Deseja realmente excluir o usuário {Lista.CurrentRow.Cells[1].Value.ToString()}?";
+                string caption = "Excluir";
+                var result = MessageBox.Show(message, caption,
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    GetCircuitoController().Delete(Convert.ToInt32(Lista.CurrentRow.Cells[0].Value.ToString()));
+                    PreencheGrid();
+                }
+            }
+        }
     }
 }

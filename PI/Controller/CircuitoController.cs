@@ -54,7 +54,7 @@ namespace PI.Controller
 
                     if (query != null)
                     {
-                        query.ID_STATUS = 1;
+                        //query.ID_STATUS = 1;
                         query.ID_USER = Helper.Helper.GetIdUser();
                         query.OBSERVACAO = dto.observacao.ToUpper();
                         query.DESCRICAO = dto.descricao.ToUpper();
@@ -143,6 +143,21 @@ namespace PI.Controller
             }
         }
 
+        public bool ValidaExisteCodCircuito(int cod)
+        {
+            using (var ctx = new DBContext())
+            {
+
+                var query = (from c in ctx.CIRCUITO
+                             where c.COD_CIRCUITO == cod
+                             select c);
+
+                if (query == null)
+                    return false;
+
+                return true;
+            }
+        }
         public string GetBitolaCabo(string tipoInstalacao, int fase, decimal corrente)
         {
             string bitolaCabo = string.Empty;

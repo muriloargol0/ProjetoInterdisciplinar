@@ -61,6 +61,7 @@
             this.btnProjeto.TabIndex = 2;
             this.btnProjeto.Text = "PROJETO";
             this.btnProjeto.UseVisualStyleBackColor = true;
+            this.btnProjeto.Click += new System.EventHandler(this.btnProjeto_Click);
             // 
             // Menu
             // 

@@ -63,5 +63,7 @@ namespace PI.Database
         public virtual ICollection<CIRCUITO_PROJETO> CIRCUITO_PROJETO { get; set; }
 
         public virtual STATUS STATUS { get; set; }
+
+        public virtual USER USER { get; set; }
     }
 }

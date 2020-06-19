@@ -125,3 +125,5 @@ C:\sistemas\ProjetoInterdisciplinar\CODE\Pi\obj\Debug\PI.csproj.CopyComplete
 C:\sistemas\ProjetoInterdisciplinar\CODE\Pi\obj\Debug\PI.exe
 C:\sistemas\ProjetoInterdisciplinar\CODE\Pi\obj\Debug\PI.pdb
 C:\sistemas\ProjetoInterdisciplinar\CODE\Pi\obj\Debug\PI.csprojAssemblyReference.cache
+C:\sistemas\ProjetoInterdisciplinar\CODE\Pi\obj\Debug\PI.View.FormBuscaProjeto.resources
+C:\sistemas\ProjetoInterdisciplinar\CODE\Pi\obj\Debug\PI.View.FormCadastroProjeto.resources

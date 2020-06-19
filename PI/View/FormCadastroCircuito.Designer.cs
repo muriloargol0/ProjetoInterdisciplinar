@@ -220,6 +220,7 @@
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.Tag = "1";
             this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
+            this.txtCodigo.Leave += new System.EventHandler(this.txtCodigo_Leave);
             // 
             // lblFases
             // 
@@ -481,7 +482,7 @@
             this.MinimizeBox = false;
             this.Name = "FormCadastroCircuito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormCadastroCircuito";
+            this.Text = "Cadastro de Circuitos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCadastroCircuito_FormClosing);
             this.Load += new System.EventHandler(this.FormCadastroCircuito_Load);
             this.panel1.ResumeLayout(false);

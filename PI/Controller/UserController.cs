@@ -43,7 +43,7 @@ namespace PI.Controller
 
                     if (query != null)
                     {
-                        query.ID_STATUS = 1;
+                        //query.ID_STATUS = 1;
                         query.LOGIN = dto.login.ToUpper();
                         query.NOME = dto.nome.ToUpper();
                         query.SENHA = dto.senha.ToUpper();

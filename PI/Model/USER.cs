@@ -35,6 +35,8 @@ namespace PI.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PROJETO> PROJETO { get; set; }
 
+        public virtual ICollection<CIRCUITO> CIRCUITO { get; set; }
+
         public virtual STATUS STATUS { get; set; }
     }
 }

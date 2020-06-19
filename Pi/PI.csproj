@@ -127,6 +127,7 @@
   <ItemGroup>
     <Compile Include="Controller\CircuitoController.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\ProjetoController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="Model\CIRCUITO.cs" />
@@ -134,6 +135,8 @@
     <Compile Include="Model\DBContext.cs" />
     <Compile Include="Model\DIMENSAO_CABO.cs" />
     <Compile Include="Model\In\CircuitoDTO.cs" />
+    <Compile Include="Model\In\CircuitoProjetoDTO.cs" />
+    <Compile Include="Model\In\ProjetoDTO.cs" />
     <Compile Include="Model\In\UserDTO.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -157,6 +160,12 @@
     <Compile Include="View\FormBuscaCircuito.Designer.cs">
       <DependentUpon>FormBuscaCircuito.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormBuscaProjeto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormBuscaProjeto.Designer.cs">
+      <DependentUpon>FormBuscaProjeto.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormBuscaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +177,12 @@
     </Compile>
     <Compile Include="View\FormCadastroCircuito.Designer.cs">
       <DependentUpon>FormCadastroCircuito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormCadastroProjeto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCadastroProjeto.Designer.cs">
+      <DependentUpon>FormCadastroProjeto.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormCadastroUsuario.cs">
       <SubType>Form</SubType>
@@ -205,11 +220,17 @@
     <EmbeddedResource Include="View\FormBuscaCircuito.resx">
       <DependentUpon>FormBuscaCircuito.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormBuscaProjeto.resx">
+      <DependentUpon>FormBuscaProjeto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormBuscaUsuario.resx">
       <DependentUpon>FormBuscaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormCadastroCircuito.resx">
       <DependentUpon>FormCadastroCircuito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCadastroProjeto.resx">
+      <DependentUpon>FormCadastroProjeto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormCadastroUsuario.resx">
       <DependentUpon>FormCadastroUsuario.cs</DependentUpon>
