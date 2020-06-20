@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace PI.Model.In
 {
-    class CircuitoProjetoDTO
+    public class CircuitoProjetoDTO
     {
+        public int idCircuito { get; set; }
+        public string descricaoCircuito { get; set; }
+        public int entrada { get; set; }
+        public int? correnteDisjuntor { get; set; }
     }
 }

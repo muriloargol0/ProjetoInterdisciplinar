@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PI.Controller;
+using PI.Database;
+using PI.Model.In;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +17,9 @@ namespace PI.View
     public partial class FormCadastroProjeto : Form
     {
         ProjetoController _pc = null;
+        List<CircuitoProjetoDTO> _cpDTO = null;
+        CircuitoDTO _circuitoDTO = null;
+
         public FormCadastroProjeto(ProjetoController pc)
         {
             _pc = pc;
@@ -28,11 +33,36 @@ namespace PI.View
             return _pc;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private List<CircuitoProjetoDTO> GetListCircuitoProjetoDTO()
+        {
+            if (_cpDTO == null)
+                _cpDTO = new List<CircuitoProjetoDTO>();
+
+            return _cpDTO;
+        }
+
+        private int GetEntradaBalanceada(int? correnteDisjuntor)
+        {
+            //TODO: fazer o calculo e verificar qual a melhor entrada para esse circuito ser inserido
+            return 1;
+        }
+
+
+        private void btnAdicionarCircuito_Click(object sender, EventArgs e)
         {
             if(!string.IsNullOrEmpty(txtCodigoCircuito.Text) && !string.IsNullOrEmpty(txtDescricaoCircuito.Text))
             {
-                Lista.Rows.Add(txtCodigoCircuito.Text, txtDescricaoCircuito.Text, "1");
+                Lista.Rows.Add(txtCodigoCircuito.Text, txtDescricaoCircuito.Text, GetUltimoCircuitoAdicionado().disjuntor,"1");
+                txtCodigoCircuito.Focus();             
+
+                CircuitoProjetoDTO cp = new CircuitoProjetoDTO();
+                cp.idCircuito = Convert.ToInt32(GetUltimoCircuitoAdicionado().idCircuito);
+                cp.descricaoCircuito = GetUltimoCircuitoAdicionado().descricao;
+                cp.correnteDisjuntor = GetUltimoCircuitoAdicionado().disjuntor;
+                cp.entrada = GetEntradaBalanceada(cp.correnteDisjuntor);
+
+                //Adiciona o circuito na lista que será utilizada para salvar no banco
+                GetListCircuitoProjetoDTO().Add(cp);
             }
             else
             {
@@ -41,14 +71,45 @@ namespace PI.View
             }
         }
 
-        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        private void txtDescricaoProjeto_TextChanged(object sender, EventArgs e)
         {
-            Helper.Helper.SomenteCaracteres(txtCodigo.Text);
+            txtDescricaoProjeto.Text = Helper.Helper.SomenteCaracteres(txtDescricaoProjeto.Text);
         }
 
         private void txtEntradas_TextChanged(object sender, EventArgs e)
         {
-            Helper.Helper.SomenteNumeros(txtEntradas.Text);
+            txtEntradas.Text = Helper.Helper.SomenteNumeros(txtEntradas.Text);
+
+            if (!string.IsNullOrEmpty(txtEntradas.Text))
+            {
+                if (Convert.ToInt32(txtEntradas.Text) < 1 || Convert.ToInt32(txtEntradas.Text) > 3)
+                {
+                    Helper.Helper.ShowMessageError("Valor inválido, este campo aceita apenas valores de 1 até 3!", "Valor incompatível");
+                    txtEntradas.Text = string.Empty;
+                    txtCodigoCircuito.ReadOnly = true;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(txtCodigoCircuito.Text))
+                    {
+                        txtCodigoCircuito.ReadOnly = false;
+                    }
+                    else
+                    {
+                        txtCodigoCircuito.ReadOnly = true;
+                    }
+                }
+            }
+        }
+
+        private void SetUltimoCircuitoAdicionado(CircuitoDTO c)
+        {
+            _circuitoDTO = c;
+        }
+
+        private CircuitoDTO GetUltimoCircuitoAdicionado()
+        {
+            return _circuitoDTO;
         }
 
         private void txtCodigoCircuito_KeyPress(object sender, KeyPressEventArgs e)
@@ -59,11 +120,14 @@ namespace PI.View
                 if (c.idCircuito > 0)
                 { 
                     txtDescricaoCircuito.Text = c.descricao;
+                    btnAdicionarCircuito.Focus();
+                    SetUltimoCircuitoAdicionado(c);
                 }
                 else
                 {
                     Helper.Helper.ShowMessageError("Circuito não encontrado!", "Erro ao buscar circuito");
                     txtCodigoCircuito.Text = string.Empty;
+                    txtDescricaoCircuito.Text = string.Empty;
                 }
             }
         }

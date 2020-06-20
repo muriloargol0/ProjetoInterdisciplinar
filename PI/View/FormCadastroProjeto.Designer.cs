@@ -34,21 +34,22 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.lblDescricao = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtDescricaoProjeto = new System.Windows.Forms.TextBox();
             this.lblEntradas = new System.Windows.Forms.Label();
             this.txtEntradas = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRemoverItem = new System.Windows.Forms.Button();
+            this.Lista = new System.Windows.Forms.DataGridView();
+            this.btnAdicionarCircuito = new System.Windows.Forms.Button();
+            this.txtDescricaoCircuito = new System.Windows.Forms.TextBox();
             this.txtCodigoCircuito = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
-            this.txtDescricaoCircuito = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Lista = new System.Windows.Forms.DataGridView();
             this.lblQO = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CORRENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ENTRADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRemoverItem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
@@ -139,15 +140,15 @@
             this.lblDescricao.TabIndex = 33;
             this.lblDescricao.Text = "Descrição";
             // 
-            // txtCodigo
+            // txtDescricaoProjeto
             // 
-            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCodigo.Location = new System.Drawing.Point(74, 80);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(487, 20);
-            this.txtCodigo.TabIndex = 32;
-            this.txtCodigo.Tag = "1";
-            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
+            this.txtDescricaoProjeto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescricaoProjeto.Location = new System.Drawing.Point(74, 80);
+            this.txtDescricaoProjeto.Name = "txtDescricaoProjeto";
+            this.txtDescricaoProjeto.Size = new System.Drawing.Size(487, 20);
+            this.txtDescricaoProjeto.TabIndex = 0;
+            this.txtDescricaoProjeto.Tag = "1";
+            this.txtDescricaoProjeto.TextChanged += new System.EventHandler(this.txtDescricaoProjeto_TextChanged);
             // 
             // lblEntradas
             // 
@@ -164,7 +165,7 @@
             this.txtEntradas.Location = new System.Drawing.Point(628, 80);
             this.txtEntradas.Name = "txtEntradas";
             this.txtEntradas.Size = new System.Drawing.Size(151, 20);
-            this.txtEntradas.TabIndex = 36;
+            this.txtEntradas.TabIndex = 1;
             this.txtEntradas.Tag = "1";
             this.txtEntradas.TextChanged += new System.EventHandler(this.txtEntradas_TextChanged);
             // 
@@ -172,7 +173,7 @@
             // 
             this.groupBox1.Controls.Add(this.btnRemoverItem);
             this.groupBox1.Controls.Add(this.Lista);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnAdicionarCircuito);
             this.groupBox1.Controls.Add(this.txtDescricaoCircuito);
             this.groupBox1.Controls.Add(this.txtCodigoCircuito);
             this.groupBox1.Controls.Add(this.lblCodigo);
@@ -183,50 +184,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar Circuito";
             // 
-            // txtCodigoCircuito
+            // btnRemoverItem
             // 
-            this.txtCodigoCircuito.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCodigoCircuito.Location = new System.Drawing.Point(60, 34);
-            this.txtCodigoCircuito.Name = "txtCodigoCircuito";
-            this.txtCodigoCircuito.Size = new System.Drawing.Size(114, 20);
-            this.txtCodigoCircuito.TabIndex = 38;
-            this.txtCodigoCircuito.Tag = "1";
-            this.txtCodigoCircuito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoCircuito_KeyPress);
-            // 
-            // lblCodigo
-            // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(6, 36);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(40, 13);
-            this.lblCodigo.TabIndex = 37;
-            this.lblCodigo.Text = "Código";
-            // 
-            // txtDescricaoCircuito
-            // 
-            this.txtDescricaoCircuito.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescricaoCircuito.Location = new System.Drawing.Point(180, 34);
-            this.txtDescricaoCircuito.Name = "txtDescricaoCircuito";
-            this.txtDescricaoCircuito.ReadOnly = true;
-            this.txtDescricaoCircuito.Size = new System.Drawing.Size(367, 20);
-            this.txtDescricaoCircuito.TabIndex = 39;
-            this.txtDescricaoCircuito.Tag = "1";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.button1.Location = new System.Drawing.Point(556, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(46, 23);
-            this.button1.TabIndex = 35;
-            this.button1.TabStop = false;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRemoverItem.BackColor = System.Drawing.Color.White;
+            this.btnRemoverItem.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnRemoverItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverItem.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverItem.ForeColor = System.Drawing.Color.Red;
+            this.btnRemoverItem.Location = new System.Drawing.Point(608, 32);
+            this.btnRemoverItem.Name = "btnRemoverItem";
+            this.btnRemoverItem.Size = new System.Drawing.Size(46, 23);
+            this.btnRemoverItem.TabIndex = 43;
+            this.btnRemoverItem.TabStop = false;
+            this.btnRemoverItem.Text = "-";
+            this.btnRemoverItem.UseVisualStyleBackColor = false;
+            this.btnRemoverItem.Click += new System.EventHandler(this.btnRemoverItem_Click);
             // 
             // Lista
             // 
@@ -238,6 +210,7 @@
             this.Lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGO,
             this.DESCRICAO,
+            this.CORRENTE,
             this.ENTRADA});
             this.Lista.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Lista.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -249,6 +222,52 @@
             this.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Lista.Size = new System.Drawing.Size(759, 180);
             this.Lista.TabIndex = 42;
+            // 
+            // btnAdicionarCircuito
+            // 
+            this.btnAdicionarCircuito.BackColor = System.Drawing.Color.White;
+            this.btnAdicionarCircuito.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnAdicionarCircuito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionarCircuito.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarCircuito.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnAdicionarCircuito.Location = new System.Drawing.Point(556, 32);
+            this.btnAdicionarCircuito.Name = "btnAdicionarCircuito";
+            this.btnAdicionarCircuito.Size = new System.Drawing.Size(46, 23);
+            this.btnAdicionarCircuito.TabIndex = 35;
+            this.btnAdicionarCircuito.TabStop = false;
+            this.btnAdicionarCircuito.Text = "+";
+            this.btnAdicionarCircuito.UseVisualStyleBackColor = false;
+            this.btnAdicionarCircuito.Click += new System.EventHandler(this.btnAdicionarCircuito_Click);
+            // 
+            // txtDescricaoCircuito
+            // 
+            this.txtDescricaoCircuito.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescricaoCircuito.Location = new System.Drawing.Point(180, 34);
+            this.txtDescricaoCircuito.Name = "txtDescricaoCircuito";
+            this.txtDescricaoCircuito.ReadOnly = true;
+            this.txtDescricaoCircuito.Size = new System.Drawing.Size(367, 20);
+            this.txtDescricaoCircuito.TabIndex = 39;
+            this.txtDescricaoCircuito.Tag = "1";
+            // 
+            // txtCodigoCircuito
+            // 
+            this.txtCodigoCircuito.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigoCircuito.Location = new System.Drawing.Point(60, 34);
+            this.txtCodigoCircuito.Name = "txtCodigoCircuito";
+            this.txtCodigoCircuito.ReadOnly = true;
+            this.txtCodigoCircuito.Size = new System.Drawing.Size(114, 20);
+            this.txtCodigoCircuito.TabIndex = 3;
+            this.txtCodigoCircuito.Tag = "1";
+            this.txtCodigoCircuito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoCircuito_KeyPress);
+            // 
+            // lblCodigo
+            // 
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Location = new System.Drawing.Point(6, 36);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(40, 13);
+            this.lblCodigo.TabIndex = 37;
+            this.lblCodigo.Text = "Código";
             // 
             // lblQO
             // 
@@ -282,27 +301,17 @@
             this.DESCRICAO.ReadOnly = true;
             this.DESCRICAO.Width = 400;
             // 
+            // CORRENTE
+            // 
+            this.CORRENTE.HeaderText = "CORRENTE";
+            this.CORRENTE.Name = "CORRENTE";
+            this.CORRENTE.ReadOnly = true;
+            // 
             // ENTRADA
             // 
             this.ENTRADA.HeaderText = "ENTRADA";
             this.ENTRADA.Name = "ENTRADA";
             this.ENTRADA.ReadOnly = true;
-            // 
-            // btnRemoverItem
-            // 
-            this.btnRemoverItem.BackColor = System.Drawing.Color.White;
-            this.btnRemoverItem.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btnRemoverItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverItem.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverItem.ForeColor = System.Drawing.Color.Red;
-            this.btnRemoverItem.Location = new System.Drawing.Point(608, 32);
-            this.btnRemoverItem.Name = "btnRemoverItem";
-            this.btnRemoverItem.Size = new System.Drawing.Size(46, 23);
-            this.btnRemoverItem.TabIndex = 43;
-            this.btnRemoverItem.TabStop = false;
-            this.btnRemoverItem.Text = "-";
-            this.btnRemoverItem.UseVisualStyleBackColor = false;
-            this.btnRemoverItem.Click += new System.EventHandler(this.btnRemoverItem_Click);
             // 
             // FormCadastroProjeto
             // 
@@ -318,7 +327,7 @@
             this.Controls.Add(this.lblEntradas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblDescricao);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtDescricaoProjeto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -343,20 +352,21 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Label lblDescricao;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtDescricaoProjeto;
         private System.Windows.Forms.Label lblEntradas;
         private System.Windows.Forms.TextBox txtEntradas;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtDescricaoCircuito;
         private System.Windows.Forms.TextBox txtCodigoCircuito;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdicionarCircuito;
         private System.Windows.Forms.DataGridView Lista;
         private System.Windows.Forms.Label lblQO;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnRemoverItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGO;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRICAO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CORRENTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ENTRADA;
     }
 }
