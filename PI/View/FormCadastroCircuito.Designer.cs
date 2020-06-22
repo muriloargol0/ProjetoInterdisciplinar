@@ -59,11 +59,11 @@
             this.txtFatorPotencia = new System.Windows.Forms.TextBox();
             this.txtTensao = new System.Windows.Forms.TextBox();
             this.txtPotenciaAtiva = new System.Windows.Forms.TextBox();
-            this.txtDisjuntorDR = new System.Windows.Forms.TextBox();
             this.txtDRAmper = new System.Windows.Forms.TextBox();
             this.txtDisjuntor = new System.Windows.Forms.TextBox();
             this.txtFases = new System.Windows.Forms.TextBox();
             this.txtTipoInstalacao = new System.Windows.Forms.ComboBox();
+            this.txtDisjuntorDR = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,7 +110,7 @@
             // lblDisjuntorDR
             // 
             this.lblDisjuntorDR.AutoSize = true;
-            this.lblDisjuntorDR.Location = new System.Drawing.Point(280, 209);
+            this.lblDisjuntorDR.Location = new System.Drawing.Point(13, 208);
             this.lblDisjuntorDR.Name = "lblDisjuntorDR";
             this.lblDisjuntorDR.Size = new System.Drawing.Size(67, 13);
             this.lblDisjuntorDR.TabIndex = 4;
@@ -120,7 +120,7 @@
             // lblDRAmper
             // 
             this.lblDRAmper.AutoSize = true;
-            this.lblDRAmper.Location = new System.Drawing.Point(506, 158);
+            this.lblDRAmper.Location = new System.Drawing.Point(280, 208);
             this.lblDRAmper.Name = "lblDRAmper";
             this.lblDRAmper.Size = new System.Drawing.Size(59, 13);
             this.lblDRAmper.TabIndex = 6;
@@ -129,7 +129,7 @@
             // lblObservacao
             // 
             this.lblObservacao.AutoSize = true;
-            this.lblObservacao.Location = new System.Drawing.Point(11, 232);
+            this.lblObservacao.Location = new System.Drawing.Point(15, 232);
             this.lblObservacao.Name = "lblObservacao";
             this.lblObservacao.Size = new System.Drawing.Size(65, 13);
             this.lblObservacao.TabIndex = 9;
@@ -138,7 +138,7 @@
             // lblDisjuntor
             // 
             this.lblDisjuntor.AutoSize = true;
-            this.lblDisjuntor.Location = new System.Drawing.Point(13, 208);
+            this.lblDisjuntor.Location = new System.Drawing.Point(506, 156);
             this.lblDisjuntor.Name = "lblDisjuntor";
             this.lblDisjuntor.Size = new System.Drawing.Size(48, 13);
             this.lblDisjuntor.TabIndex = 12;
@@ -214,6 +214,7 @@
             // txtCodigo
             // 
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigo.Location = new System.Drawing.Point(121, 76);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(144, 20);
@@ -384,32 +385,22 @@
             this.txtPotenciaAtiva.Tag = "1";
             this.txtPotenciaAtiva.TextChanged += new System.EventHandler(this.txtPotenciaAtiva_TextChanged);
             // 
-            // txtDisjuntorDR
-            // 
-            this.txtDisjuntorDR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDisjuntorDR.Location = new System.Drawing.Point(381, 206);
-            this.txtDisjuntorDR.Name = "txtDisjuntorDR";
-            this.txtDisjuntorDR.Size = new System.Drawing.Size(119, 20);
-            this.txtDisjuntorDR.TabIndex = 12;
-            this.txtDisjuntorDR.Tag = "1";
-            this.txtDisjuntorDR.TextChanged += new System.EventHandler(this.txtDisjuntorDR_TextChanged);
-            // 
             // txtDRAmper
             // 
             this.txtDRAmper.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDRAmper.Location = new System.Drawing.Point(583, 154);
+            this.txtDRAmper.Location = new System.Drawing.Point(381, 206);
             this.txtDRAmper.Name = "txtDRAmper";
-            this.txtDRAmper.Size = new System.Drawing.Size(142, 20);
-            this.txtDRAmper.TabIndex = 7;
+            this.txtDRAmper.Size = new System.Drawing.Size(119, 20);
+            this.txtDRAmper.TabIndex = 12;
             this.txtDRAmper.Tag = "1";
             // 
             // txtDisjuntor
             // 
             this.txtDisjuntor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDisjuntor.Location = new System.Drawing.Point(121, 206);
+            this.txtDisjuntor.Location = new System.Drawing.Point(583, 154);
             this.txtDisjuntor.Name = "txtDisjuntor";
-            this.txtDisjuntor.Size = new System.Drawing.Size(144, 20);
-            this.txtDisjuntor.TabIndex = 11;
+            this.txtDisjuntor.Size = new System.Drawing.Size(143, 20);
+            this.txtDisjuntor.TabIndex = 7;
             this.txtDisjuntor.Tag = "1";
             this.txtDisjuntor.TextChanged += new System.EventHandler(this.txtDisjuntor_TextChanged);
             // 
@@ -440,6 +431,19 @@
             this.txtTipoInstalacao.Tag = "1";
             this.txtTipoInstalacao.TextChanged += new System.EventHandler(this.txtTipoInstalacao_TextChanged);
             // 
+            // txtDisjuntorDR
+            // 
+            this.txtDisjuntorDR.FormattingEnabled = true;
+            this.txtDisjuntorDR.Items.AddRange(new object[] {
+            "NÃO",
+            "SIM"});
+            this.txtDisjuntorDR.Location = new System.Drawing.Point(121, 205);
+            this.txtDisjuntorDR.Name = "txtDisjuntorDR";
+            this.txtDisjuntorDR.Size = new System.Drawing.Size(144, 21);
+            this.txtDisjuntorDR.TabIndex = 11;
+            this.txtDisjuntorDR.Tag = "1";
+            this.txtDisjuntorDR.SelectedIndexChanged += new System.EventHandler(this.txtDisjuntorDR_SelectedIndexChanged);
+            // 
             // FormCadastroCircuito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -447,12 +451,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(748, 394);
             this.ControlBox = false;
+            this.Controls.Add(this.txtDisjuntorDR);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTipoInstalacao);
             this.Controls.Add(this.txtFases);
             this.Controls.Add(this.txtDisjuntor);
             this.Controls.Add(this.txtDRAmper);
-            this.Controls.Add(this.txtDisjuntorDR);
             this.Controls.Add(this.txtPotenciaAtiva);
             this.Controls.Add(this.txtTensao);
             this.Controls.Add(this.txtFatorPotencia);
@@ -522,11 +526,11 @@
         private System.Windows.Forms.TextBox txtFatorPotencia;
         private System.Windows.Forms.TextBox txtTensao;
         private System.Windows.Forms.TextBox txtPotenciaAtiva;
-        private System.Windows.Forms.TextBox txtDisjuntorDR;
         private System.Windows.Forms.TextBox txtDRAmper;
         private System.Windows.Forms.TextBox txtDisjuntor;
         private System.Windows.Forms.TextBox txtFases;
         private System.Windows.Forms.ComboBox txtTipoInstalacao;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox txtDisjuntorDR;
     }
 }

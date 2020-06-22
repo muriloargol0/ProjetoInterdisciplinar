@@ -59,7 +59,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.ForestGreen;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnImprimir);
             this.panel1.Controls.Add(this.btnFechar);
             this.panel1.Controls.Add(this.btnExcluir);
             this.panel1.Controls.Add(this.btnSalvar);
@@ -77,13 +76,14 @@
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnImprimir.Location = new System.Drawing.Point(359, 16);
+            this.btnImprimir.Location = new System.Drawing.Point(628, 380);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(102, 23);
+            this.btnImprimir.Size = new System.Drawing.Size(147, 53);
             this.btnImprimir.TabIndex = 35;
             this.btnImprimir.TabStop = false;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnFechar
             // 
@@ -161,6 +161,7 @@
             // txtDescricaoProjeto
             // 
             this.txtDescricaoProjeto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescricaoProjeto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricaoProjeto.Location = new System.Drawing.Point(74, 75);
             this.txtDescricaoProjeto.Name = "txtDescricaoProjeto";
             this.txtDescricaoProjeto.Size = new System.Drawing.Size(487, 20);
@@ -328,8 +329,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(794, 378);
+            this.ClientSize = new System.Drawing.Size(794, 445);
             this.ControlBox = false;
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtEntradas);

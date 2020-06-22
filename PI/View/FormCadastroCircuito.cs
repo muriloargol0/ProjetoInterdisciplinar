@@ -99,7 +99,7 @@ namespace PI.View
                 dto.idCircuito = Convert.ToInt32(txtID.Text == "" ? "0" : txtID.Text);
                 dto.descricao = txtDescricao.Text;
                 dto.potenciaAparente = Convert.ToDecimal(txtPotenciaAparente.Text);
-                dto.disjuntorDr = Convert.ToInt32(txtDisjuntorDR.Text);
+                dto.disjuntorDr = Convert.ToInt32(txtDisjuntorDR.SelectedIndex);
                 dto.DrAmper = Convert.ToInt32(txtDRAmper.Text);
                 dto.observacao = txtObservacao.Text;
                 dto.disjuntor = Convert.ToInt32(txtDisjuntor.Text);
@@ -215,7 +215,7 @@ namespace PI.View
             txtCorrenteAlternada.Text = dto.CORRENTE_ALTERNADA.ToString();
             txtDescricao.Text = dto.DESCRICAO.ToUpper();
             txtDisjuntor.Text = dto.DISJUNTOR.ToString();
-            txtDisjuntorDR.Text = dto.DISJUNTOR_DR.ToString();
+            txtDisjuntorDR.SelectedIndex = Convert.ToInt32(dto.DISJUNTOR_DR);
             txtDRAmper.Text = dto.DR_AMPER.ToString();
             txtFases.Text = dto.FASES.ToString();
             txtFatorPotencia.Text = dto.FATOR_POTENCIA.ToString();
@@ -272,6 +272,19 @@ namespace PI.View
                     Helper.Helper.ShowMessageError("Já existe um circuito cadastrado com esse código!", "Erro de Validação");
                     txtCodigo.Text = string.Empty;
                 }
+            }
+        }
+
+        private void txtDisjuntorDR_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(txtDisjuntorDR.Text == "NÃO")
+            {
+                txtDRAmper.ReadOnly = true;
+                txtDRAmper.Text = "0";
+            }
+            else
+            {
+                txtDRAmper.ReadOnly = false;
             }
         }
     }

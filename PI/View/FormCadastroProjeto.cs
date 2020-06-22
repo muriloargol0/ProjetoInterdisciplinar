@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Reporting.WinForms;
 using PI.Controller;
 using PI.Database;
 using PI.Model.In;
+using PI.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -178,11 +180,13 @@ namespace PI.View
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
         private void FormCadastroProjeto_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             GetProjetoController().isFormCadastroOpened = false;
         }
 
@@ -236,26 +240,29 @@ namespace PI.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            ProjetoDTO p = new ProjetoDTO();
-           
-            p.idProjeto = Convert.ToInt32(txtID.Text == "" ? "0" : txtID.Text);
-            p.descricao = txtDescricaoProjeto.Text;
-            p.entradas = Convert.ToInt32(txtEntradas.Text);
-            p.idUser = Helper.Helper.GetIdUser();
-            p.idStatus = 1;
-
-            GetProjetoController().Save(p, out int id_projeto, GetListCircuitoProjetoDTO());
-
-            if (string.IsNullOrEmpty(txtID.Text))
+            if (Helper.Helper.ValidaCampos(this.Controls))
             {
-                MessageBox.Show("Projeto cadastrado com sucesso!");
-            }
-            else
-            {
-                MessageBox.Show("Projeto alterado com sucesso!");
-            }
+                ProjetoDTO p = new ProjetoDTO();
 
-            txtID.Text = id_projeto.ToString();
+                p.idProjeto = Convert.ToInt32(txtID.Text == "" ? "0" : txtID.Text);
+                p.descricao = txtDescricaoProjeto.Text;
+                p.entradas = Convert.ToInt32(txtEntradas.Text);
+                p.idUser = Helper.Helper.GetIdUser();
+                p.idStatus = 1;
+
+                GetProjetoController().Save(p, out int id_projeto, GetListCircuitoProjetoDTO());
+
+                if (string.IsNullOrEmpty(txtID.Text))
+                {
+                    MessageBox.Show("Projeto cadastrado com sucesso!");
+                }
+                else
+                {
+                    MessageBox.Show("Projeto alterado com sucesso!");
+                }
+
+                txtID.Text = id_projeto.ToString();
+            }
         }
 
         private void FormCadastroProjeto_Load(object sender, EventArgs e)
@@ -316,6 +323,21 @@ namespace PI.View
         {
             Helper.Helper.LimparCampos(this.Controls);
             Lista.Rows.Clear();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                ReportProjeto rp = new ReportProjeto();
+                rp.idProjeto = Convert.ToInt32(txtID.Text);
+                rp.Show();
+
+            }
+            else
+            {
+                Helper.Helper.ShowMessageError("Para imprimir o projeto é preciso salvá-lo!", "Erro de impressão");
+            }
         }
     }
 }
