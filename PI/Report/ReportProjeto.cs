@@ -40,10 +40,11 @@ namespace PI.Report
                 dataTable.Columns.Add("DESCRICAO");
                 dataTable.Columns.Add("DISJUNTOR", typeof(int));
                 dataTable.Columns.Add("FASES", typeof(int));
+                dataTable.Columns.Add("FATOR_POTENCIA");
 
                 foreach (var item in itens)
                 {
-                    dataTable.Rows.Add(item.ci.COD_CIRCUITO.ToString(), item.ci.DESCRICAO, item.ci.DISJUNTOR, item.c.ENTRADA);
+                    dataTable.Rows.Add(item.ci.COD_CIRCUITO.ToString(), item.ci.DESCRICAO, item.ci.DISJUNTOR, item.c.ENTRADA, item.ci.BITOLA_CABO);
                 }
 
                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DSCircuito", dataTable));

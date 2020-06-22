@@ -31,7 +31,6 @@ namespace PI.View
 
                     if (!isLogged)
                     {
-                        MessageBox.Show(msg);
                         txtLogin.Text = string.Empty;
                         txtSenha.Text = string.Empty;
                     }

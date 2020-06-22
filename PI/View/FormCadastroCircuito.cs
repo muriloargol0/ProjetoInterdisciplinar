@@ -265,7 +265,7 @@ namespace PI.View
 
         private void txtCodigo_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtID.Text))
+            if (!string.IsNullOrEmpty(txtID.Text))
             {
                 if (GetCircuitoController().ValidaExisteCodCircuito(Convert.ToInt32(txtCodigo.Text)))
                 {

@@ -20,6 +20,7 @@ namespace PI.Controller
 
                 if(usr == null)
                 {
+                    Helper.Helper.ShowMessageError("Usuário e senha incorretos!", "Acesso negado");
                     mensagem = "Usuário e senha incorretos!";
                     return false;
                 }

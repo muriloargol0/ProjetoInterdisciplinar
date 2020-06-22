@@ -58,9 +58,28 @@ namespace PI.View
             if (entrada1 == 0) 
                 return 1;
             if (entrada2 == 0)
-                return 2; 
+                return 2;
 
-            if(Convert.ToInt32(txtEntradas.Text) == 3)
+            if (Convert.ToInt32(txtEntradas.Text) == 2)
+            {
+                if (((entrada1 + correnteDisjuntor) <= (entrada2 + correnteDisjuntor)))
+                {
+                    entradaFinal = 1;
+
+                }
+
+                if (((entrada2 + correnteDisjuntor) <= (entrada1 + correnteDisjuntor)))
+                {
+                    entradaFinal = 2;
+                }
+
+                if (entrada1 == entrada2)
+                {
+                    entradaFinal = 1;
+                }
+            }
+
+            if (Convert.ToInt32(txtEntradas.Text) == 3)
             {
                 if (entrada3 == 0)
                     return 3;
@@ -128,9 +147,9 @@ namespace PI.View
 
             if (!string.IsNullOrEmpty(txtEntradas.Text))
             {
-                if (Convert.ToInt32(txtEntradas.Text) < 1 || Convert.ToInt32(txtEntradas.Text) > 3)
+                if (Convert.ToInt32(txtEntradas.Text) <= 1 || Convert.ToInt32(txtEntradas.Text) > 3)
                 {
-                    Helper.Helper.ShowMessageError("Valor inválido, este campo aceita apenas valores de 1 até 3!", "Valor incompatível");
+                    Helper.Helper.ShowMessageError("Valor inválido, este campo aceita apenas valores de 2 ou 3!", "Valor incompatível");
                     txtEntradas.Text = string.Empty;
                     txtCodigoCircuito.ReadOnly = true;
                 }
