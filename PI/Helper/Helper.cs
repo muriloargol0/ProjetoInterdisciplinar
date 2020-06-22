@@ -50,6 +50,9 @@ namespace PI.Helper
                     ((RichTextBox)(itens)).Text = string.Empty;
                 if (itens is ComboBox)
                     ((ComboBox)(itens)).SelectedIndex = -1;
+                if (itens is DataGridView)
+                    ((DataGridView)(itens)).Rows.Clear();
+
             }
         }
 

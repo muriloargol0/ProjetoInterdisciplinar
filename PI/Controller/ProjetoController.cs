@@ -14,7 +14,7 @@ namespace PI.Controller
         public bool isFormCadastroOpened { get; set; }
         public bool isFormBuscaOpened { get; set; }
 
-        public bool Save(ProjetoDTO dto, out int idProjeto)
+        public bool Save(ProjetoDTO dto, out int idProjeto, List<CircuitoProjetoDTO> listaCircuito)
         {
             idProjeto = 0;
 
@@ -33,7 +33,7 @@ namespace PI.Controller
                     ctx.PROJETO.Add(p);
                     ctx.SaveChanges();
 
-                    idProjeto = ctx.PROJETO.OrderBy(pt => pt.ID_PROJETO).OrderByDescending(x => x.ID_PROJETO).Take(1).FirstOrDefault().ID_PROJETO;
+                    idProjeto = ctx.PROJETO.OrderBy(pt => pt.ID_PROJETO).OrderByDescending(x => x.ID_PROJETO).Take(1).FirstOrDefault().ID_PROJETO;                   
                 }
                 else
                 {
@@ -51,16 +51,47 @@ namespace PI.Controller
                         ctx.SaveChanges();
                     }
                 }
-            }
 
+                SaveCircuitoProjeto(idProjeto, listaCircuito);
+            }
             return true;
+        }
+
+        public void SaveCircuitoProjeto(int idProjeto, List<CircuitoProjetoDTO> listaCircuito)
+        {
+            using (var ctx = new DBContext())
+            {
+                var query = (from c in ctx.CIRCUITO_PROJETO
+                             where c.ID_PROJETO == idProjeto
+                             select c).ToList();
+
+                //Se existirem circuitos adicionados ao projeto, ele remove todos e adiciona novamente
+                if(query.Count > 0)
+                {
+                    foreach (var item in query)
+                    {
+                        ctx.CIRCUITO_PROJETO.Remove(item);
+                    }
+                }
+
+                foreach (var item in listaCircuito)
+                {
+                    CIRCUITO_PROJETO cp = new CIRCUITO_PROJETO();
+                    cp.ID_PROJETO = idProjeto;
+                    cp.ID_CIRCUITO = item.idCircuito;
+                    cp.ENTRADA = Convert.ToInt32(item.entrada);
+
+                    ctx.CIRCUITO_PROJETO.Add(cp);
+                    ctx.SaveChanges();
+                }  
+            }
         }
 
         public bool Delete(int Id)
         {
             using (var ctx = new DBContext())
             {
-                var query = ctx.USER.Single(x => x.ID_USER == Id);
+                var query = ctx.PROJETO.Single(x => x.ID_PROJETO == Id);
 
                 query.ID_STATUS = 2;
                 ctx.SaveChanges();
@@ -85,7 +116,7 @@ namespace PI.Controller
                 else
                 {
                     usr = (from p in ctx.PROJETO
-                           where p.DESCRICAO == parametro && p.ID_STATUS == 1
+                           where p.DESCRICAO.Contains(parametro) && p.ID_STATUS == 1
                            select p).ToList();
                 }
 

@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -43,8 +44,49 @@ namespace PI.View
 
         private int GetEntradaBalanceada(int? correnteDisjuntor)
         {
-            //TODO: fazer o calculo e verificar qual a melhor entrada para esse circuito ser inserido
-            return 1;
+            int? entrada1 = 0;
+            int? entrada2 = 0;
+            int? entrada3 = 0;
+            int entradaFinal = 0;
+
+            entrada1 = GetListCircuitoProjetoDTO().Where(x => x.entrada == 1).Select(x => x.correnteDisjuntor).Sum();
+            entrada2 = GetListCircuitoProjetoDTO().Where(x => x.entrada == 2).Select(x => x.correnteDisjuntor).Sum();
+            entrada3 = GetListCircuitoProjetoDTO().Where(x => x.entrada == 3).Select(x => x.correnteDisjuntor).Sum();
+
+            if (entrada1 == 0) 
+                return 1;
+            if (entrada2 == 0)
+                return 2; 
+
+            if(Convert.ToInt32(txtEntradas.Text) == 3)
+            {
+                if (entrada3 == 0)
+                    return 3;
+            
+
+               if(((entrada1 + correnteDisjuntor) <= (entrada2 + correnteDisjuntor)) && ((entrada1 + correnteDisjuntor) <= (entrada3 + correnteDisjuntor)))
+                {
+                    entradaFinal = 1;
+
+                }
+
+                if (((entrada2 + correnteDisjuntor) <= (entrada1 + correnteDisjuntor)) && ((entrada2 + correnteDisjuntor) <= (entrada3 + correnteDisjuntor)))
+                {
+                    entradaFinal = 2;
+                }
+
+                if (((entrada3 + correnteDisjuntor) <= (entrada1 + correnteDisjuntor)) && ((entrada3 + correnteDisjuntor) <= (entrada2 + correnteDisjuntor)))
+                {
+                    entradaFinal = 3;
+                }
+
+                if(entrada1 == entrada2 && entrada2 == entrada3)
+                {
+                    entradaFinal = 1;
+                }
+            }
+
+            return entradaFinal;
         }
 
 
@@ -52,9 +94,7 @@ namespace PI.View
         {
             if(!string.IsNullOrEmpty(txtCodigoCircuito.Text) && !string.IsNullOrEmpty(txtDescricaoCircuito.Text))
             {
-                Lista.Rows.Add(txtCodigoCircuito.Text, txtDescricaoCircuito.Text, GetUltimoCircuitoAdicionado().disjuntor,"1");
-                txtCodigoCircuito.Focus();             
-
+                //Adiciona os itens na lista
                 CircuitoProjetoDTO cp = new CircuitoProjetoDTO();
                 cp.idCircuito = Convert.ToInt32(GetUltimoCircuitoAdicionado().idCircuito);
                 cp.descricaoCircuito = GetUltimoCircuitoAdicionado().descricao;
@@ -63,6 +103,10 @@ namespace PI.View
 
                 //Adiciona o circuito na lista que será utilizada para salvar no banco
                 GetListCircuitoProjetoDTO().Add(cp);
+
+                //Adiciona os itens no grid
+                Lista.Rows.Add(txtCodigoCircuito.Text, txtDescricaoCircuito.Text, GetUltimoCircuitoAdicionado().disjuntor, cp.entrada);
+                txtCodigoCircuito.Focus();
             }
             else
             {
@@ -153,6 +197,7 @@ namespace PI.View
                                                 MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
+                    GetListCircuitoProjetoDTO().RemoveAt(Lista.CurrentRow.Index);
                     Lista.Rows.RemoveAt(Lista.CurrentRow.Index);
                 }
             }
@@ -164,7 +209,113 @@ namespace PI.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                string message = $"Deseja realmente excluir o circuito {txtDescricaoProjeto.Text} ?";
+                string caption = "Excluir";
+                var result = MessageBox.Show(message, caption,
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    GetProjetoController().Delete(Convert.ToInt32(txtID.Text));
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            else
+            {
+                Helper.Helper.ShowMessageError("Não é possível excluir um circuito que ainda não foi registrado!", "Erro de Exclusão");
+            }
+        }
 
+        private void btnBalancemento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            ProjetoDTO p = new ProjetoDTO();
+           
+            p.idProjeto = Convert.ToInt32(txtID.Text == "" ? "0" : txtID.Text);
+            p.descricao = txtDescricaoProjeto.Text;
+            p.entradas = Convert.ToInt32(txtEntradas.Text);
+            p.idUser = Helper.Helper.GetIdUser();
+            p.idStatus = 1;
+
+            GetProjetoController().Save(p, out int id_projeto, GetListCircuitoProjetoDTO());
+
+            if (string.IsNullOrEmpty(txtID.Text))
+            {
+                MessageBox.Show("Projeto cadastrado com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Projeto alterado com sucesso!");
+            }
+
+            txtID.Text = id_projeto.ToString();
+        }
+
+        private void FormCadastroProjeto_Load(object sender, EventArgs e)
+        {
+            if (SetEditId > 0)
+            {
+                txtEntradas.ReadOnly = true;
+
+                using (var ctx = new DBContext())
+                {
+                    var edit = ctx.PROJETO.Where(x => x.ID_PROJETO == SetEditId).FirstOrDefault();
+                    if (edit == null)
+                        throw new Exception("O circuito não pode ser editado pois não foi encontrado.");
+
+                    preencheCampos(edit);
+                }
+            }
+        }
+
+        private void preencheCampos(PROJETO edit)
+        {
+            txtDescricaoProjeto.Text = edit.DESCRICAO;
+            txtEntradas.Text = edit.ENTRADAS.ToString();
+            txtID.Text = edit.ID_PROJETO.ToString();
+
+            //Preencher o grid de itens
+            using (var ctx = new DBContext())
+            {
+                var itens = (from c in ctx.CIRCUITO_PROJETO
+                             join ci in ctx.CIRCUITO on c.ID_CIRCUITO equals ci.ID_CIRCUITO
+                             where c.ID_PROJETO == edit.ID_PROJETO
+                             select new { c.ID_CIRCUITO, c.ID_CIRCUITO_PROJETO, c.ID_PROJETO, c.ENTRADA, ci.DESCRICAO, ci.DISJUNTOR, ci.COD_CIRCUITO }).ToList();
+
+                if (itens.Count > 0)
+                {
+                    foreach (var item in itens)
+                    {
+                        //Adiciona os itens na lista
+                        CircuitoProjetoDTO cp = new CircuitoProjetoDTO();
+                        cp.idCircuito = item.ID_CIRCUITO;
+                        cp.descricaoCircuito = item.DESCRICAO;
+                        cp.correnteDisjuntor = item.DISJUNTOR;
+                        cp.entrada = item.ENTRADA;
+
+                        //Adiciona o circuito na lista que será utilizada para salvar no banco
+                        GetListCircuitoProjetoDTO().Add(cp);
+
+                        //adiciona os valores no grid
+                        Lista.Rows.Add(item.COD_CIRCUITO, item.DESCRICAO, item.DISJUNTOR, item.ENTRADA);
+                    }
+                }
+
+                txtCodigoCircuito.Focus();
+            }
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            Helper.Helper.LimparCampos(this.Controls);
+            Lista.Rows.Clear();
         }
     }
 }
