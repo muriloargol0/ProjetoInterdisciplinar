@@ -82,6 +82,12 @@ namespace PI.View
                     preencheCampos(editUsr);
                 }
             }
+
+            if(Helper.Helper.GetIdUser() != 1)
+            {
+                btnNovo.Enabled = false;
+                btnExcluir.Enabled = false;
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

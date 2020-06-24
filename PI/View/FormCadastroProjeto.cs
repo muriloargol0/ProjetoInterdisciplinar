@@ -282,6 +282,10 @@ namespace PI.View
 
                 txtID.Text = id_projeto.ToString();
             }
+            else
+            {
+                Helper.Helper.ShowMessageError("Os campos destacados na cor VERMELHA devem ser preenchidos!", "Campos Obrigatórios");
+            }
         }
 
         private void FormCadastroProjeto_Load(object sender, EventArgs e)

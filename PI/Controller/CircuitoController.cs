@@ -152,7 +152,7 @@ namespace PI.Controller
                              where c.COD_CIRCUITO == cod
                              select c);
 
-                if (query == null)
+                if (query.Count() > 0)
                     return false;
 
                 return true;
