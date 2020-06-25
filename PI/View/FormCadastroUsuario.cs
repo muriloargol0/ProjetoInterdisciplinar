@@ -43,8 +43,7 @@ namespace PI.View
             {
                 ((Button)(sender)).Tag = 0;
                 txtSENHA.PasswordChar = '*';
-            }
-                
+            }   
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
