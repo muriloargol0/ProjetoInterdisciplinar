@@ -4,11 +4,12 @@ namespace PI.Database
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using PI.Helper;
 
     public partial class DBContext : DbContext
     {
         public DBContext()
-            : base("name=DBContext")
+            : base(Environment.GetEnvironmentVariable("PI"))
         {
         }
 
